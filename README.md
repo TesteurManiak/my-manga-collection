@@ -41,6 +41,7 @@ Simply browse the manga available on the API and add them to your collection. Yo
 
 * [cached_network_image](https://pub.dev/packages/cached_network_image)
 * [dio](https://pub.dev/packages/dio)
+* [equatable](https://pub.dev/packages/equatable)
 * [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)
 * [flutter_riverpod](https://pub.dev/packages/flutter_riverpod)
 * [go_router](https://pub.dev/packages/go_router)

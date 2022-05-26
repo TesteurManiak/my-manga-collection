@@ -11,6 +11,7 @@ dependencies:
   cached_network_image: ^3.2.1
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_riverpod: ^1.0.4
@@ -45,4 +46,3 @@ flutter_native_splash:
   android_12:
     color: "#F5F5F5"
     color_dark: "#222727"
-
