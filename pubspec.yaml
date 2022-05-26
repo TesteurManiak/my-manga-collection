@@ -42,7 +42,6 @@ flutter_icons:
 flutter_native_splash:
   color: "#F5F5F5"
   color_dark: "#222727"
-  branding: assets/ic_launcher.png
   android_12:
     color: "#F5F5F5"
     color_dark: "#222727"
