@@ -40,6 +40,7 @@ Simply browse the manga available on the API and add them to your collection. Yo
 ## Dependencies
 
 * [cached_network_image](https://pub.dev/packages/cached_network_image)
+* [connectivity_plus](https://pub.dev/packages/connectivity_plus)
 * [dio](https://pub.dev/packages/dio)
 * [equatable](https://pub.dev/packages/equatable)
 * [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)
