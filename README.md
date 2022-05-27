@@ -1,7 +1,7 @@
 <p align="center">
     <img src="assets/ic_launcher.png" alt="drawing" height="100" vertical-align="middle"/>
 </p>
-<p style="text-align:center"><b>My Manga Collection</b></p>
+<p align="center" style="text-align:center"><b>My Manga Collection</b></p>
 
 ---
 
