@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/extensions/string_extensions.dart';
-import '../../controllers/home/home_controller.dart';
 import '../../style/colors.dart';
 import '../browse/browse_view.dart';
 import '../collection/collection_view.dart';
 import '../settings/settings_view.dart';
+
+const _kInitialPage = 1;
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -16,13 +17,13 @@ class HomeView extends ConsumerStatefulWidget {
 }
 
 class _HomeViewState extends ConsumerState<HomeView> {
-  final _pageController = PageController(initialPage: kInitialIndex);
-  late final HomeController _homeController;
+  final _pageController = PageController(initialPage: _kInitialPage);
+
+  int _currentPage = _kInitialPage;
 
   @override
   void initState() {
     super.initState();
-    _homeController = ref.read(homeControllerProvider.notifier);
     _pageController.addListener(_onPageChanged);
   }
 
@@ -36,11 +37,10 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final currentIndex = ref.watch(homeControllerProvider);
     final colors = Theme.of(context).extension<AppColors>();
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
+        currentIndex: _currentPage,
         fixedColor: colors?.fixedBottomNavigationBar,
         onTap: _pageController.jumpToPage,
         items: [
@@ -70,5 +70,5 @@ class _HomeViewState extends ConsumerState<HomeView> {
   }
 
   void _onPageChanged() =>
-      _homeController.goToIndex(_pageController.page!.toInt());
+      setState(() => _currentPage = _pageController.page!.toInt());
 }

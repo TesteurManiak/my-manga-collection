@@ -260,6 +260,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.6"
+  dynamic_theme:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "2.0.0"
+      resolved-ref: "94b9acc2b11f58fefb56cef8db3303ae86d5c2e3"
+      url: "https://github.com/TesteurManiak/dynamic_theme.git"
+    source: git
+    version: "2.0.0"
   equatable:
     dependency: "direct main"
     description:

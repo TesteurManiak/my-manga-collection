@@ -17,6 +17,21 @@ class MangaImages extends Equatable {
     required this.originalUrl,
   });
 
+  /// Return the smallest image url.
+  String get smallestImageUrl {
+    if (tinyUrl != null) {
+      return tinyUrl!;
+    } else if (smallUrl != null) {
+      return smallUrl!;
+    } else if (mediumUrl != null) {
+      return mediumUrl!;
+    } else if (largeUrl != null) {
+      return largeUrl!;
+    } else {
+      return originalUrl!;
+    }
+  }
+
   @override
   List<Object?> get props => [
         tinyUrl,

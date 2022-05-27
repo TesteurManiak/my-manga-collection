@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/extensions/string_extensions.dart';
 import '../../controllers/browse/browse_controller.dart';
+import 'widgets/manga_tile.dart';
 
 class BrowseView extends ConsumerStatefulWidget {
   const BrowseView({Key? key}) : super(key: key);
@@ -13,12 +14,20 @@ class BrowseView extends ConsumerStatefulWidget {
 
 class _BrowseViewState extends ConsumerState<BrowseView>
     with AutomaticKeepAliveClientMixin {
+  final _textController = TextEditingController();
+
   late final BrowseController _controller;
 
   @override
   void initState() {
     super.initState();
     _controller = ref.read(browseControllerProvider.notifier);
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
   }
 
   @override
@@ -30,9 +39,14 @@ class _BrowseViewState extends ConsumerState<BrowseView>
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: TextField(
+          controller: _textController,
           autocorrect: false,
           decoration: InputDecoration(
             hintText: 'Manga name...'.hardcoded,
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.clear),
+              onPressed: _textController.clear,
+            ),
           ),
           onSubmitted: _controller.searchMangas,
         ),
@@ -40,16 +54,19 @@ class _BrowseViewState extends ConsumerState<BrowseView>
       ),
       body: pageState.isLoading
           ? const Center(child: CircularProgressIndicator())
-          : pageState.mangas.isEmpty
-              ? Center(child: Text('No mangas to display'.hardcoded))
-              : ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: pageState.mangas.length,
-                  itemBuilder: (_, index) {
-                    final manga = pageState.mangas[index];
-                    return ListTile(title: Text(manga.title));
-                  },
-                ),
+          : pageState.hasError
+              ? Center(child: Text('An error occured'.hardcoded))
+              : pageState.mangas.isEmpty
+                  ? Center(child: Text('No mangas to display'.hardcoded))
+                  : ListView.separated(
+                      padding: const EdgeInsets.all(8),
+                      itemCount: pageState.mangas.length,
+                      itemBuilder: (_, index) {
+                        final manga = pageState.mangas[index];
+                        return MangaTile(manga: manga);
+                      },
+                      separatorBuilder: (_, __) => const Divider(),
+                    ),
     );
   }
 
