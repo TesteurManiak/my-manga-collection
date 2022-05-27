@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'presentation/controllers/theme/theme_controller.dart';
 import 'presentation/style/themes.dart';
-import 'presentation/views/home/home_view.dart';
+import 'router.dart';
 
-class MyApp extends StatefulWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends ConsumerState<MyApp> {
+  final _router = routerGenerator();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    // Rebuild on theme change
+    final themeMode =
+        ref.watch(themeControllerProvider.select((value) => value.themeMode));
+
+    return MaterialApp.router(
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
-      home: const HomeView(),
+      themeMode: themeMode,
+      routerDelegate: _router.routerDelegate,
+      routeInformationParser: _router.routeInformationParser,
     );
   }
 }

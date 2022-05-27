@@ -18,6 +18,9 @@ abstract class AppTheme {
       cardColor: themeColors.background,
       backgroundColor: themeColors.background,
       extensions: {themeColors},
+      appBarTheme: _baseLight.appBarTheme.copyWith(
+        backgroundColor: themeColors.primary,
+      ),
     );
   }
 
@@ -32,6 +35,9 @@ abstract class AppTheme {
         secondarySelectedColor: themeColors.chipSelection,
       ),
       extensions: {themeColors},
+      appBarTheme: _baseDark.appBarTheme.copyWith(
+        backgroundColor: themeColors.primary,
+      ),
     );
   }
 }

@@ -47,6 +47,7 @@ Simply browse the manga available on the API and add them to your collection. Yo
 * [flutter_riverpod](https://pub.dev/packages/flutter_riverpod)
 * [go_router](https://pub.dev/packages/go_router)
 * [hive](https://pub.dev/packages/hive)
+* [shared_preferences](https://pub.dev/packages/shared_preferences)
 
 ## Credits
 
