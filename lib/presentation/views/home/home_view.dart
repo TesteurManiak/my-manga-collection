@@ -1,39 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/extensions/string_extensions.dart';
-import '../../../router.dart';
+import '../../controllers/home/home_controller.dart';
 import '../../style/colors.dart';
+import '../browse/browse_view.dart';
 import '../collection/collection_view.dart';
 import '../settings/settings_view.dart';
 
-class HomeView extends StatefulWidget {
-  final int index;
-
-  const HomeView({Key? key, required this.index})
-      : assert(index >= 0),
-        super(key: key);
+class HomeView extends ConsumerStatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
-  final _subViews = <Widget>[
-    const Scaffold(body: Center(child: Text('0'))),
-    const CollectionView(),
-    const SettingsView(),
-  ];
+class _HomeViewState extends ConsumerState<HomeView> {
+  final _pageController = PageController(initialPage: kInitialIndex);
+  late final HomeController _homeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _homeController = ref.read(homeControllerProvider.notifier);
+    _pageController.addListener(_onPageChanged);
+  }
+
+  @override
+  void dispose() {
+    _pageController
+      ..removeListener(_onPageChanged)
+      ..dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final currentIndex = ref.watch(homeControllerProvider);
     final colors = Theme.of(context).extension<AppColors>();
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: widget.index,
+        currentIndex: currentIndex,
         fixedColor: colors?.fixedBottomNavigationBar,
-        onTap: (index) =>
-            context.goNamed(AppRoute.home.name, params: {'index': '$index'}),
+        onTap: _pageController.jumpToPage,
         items: [
           BottomNavigationBarItem(
             icon: const Icon(Icons.add),
@@ -49,7 +58,17 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
-      body: _subViews[widget.index],
+      body: PageView(
+        controller: _pageController,
+        children: const [
+          BrowseView(),
+          CollectionView(),
+          SettingsView(),
+        ],
+      ),
     );
   }
+
+  void _onPageChanged() =>
+      _homeController.goToIndex(_pageController.page!.toInt());
 }

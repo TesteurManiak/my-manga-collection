@@ -3,27 +3,34 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/platform/network_info.dart';
 import '../../domain/entities/manga.dart';
 import '../../domain/repositories/manga_repository.dart';
+import '../datasources/remote/remote_datasource.dart';
 
 class MangaRepositoryImpl implements MangaRepository {
   final NetworkInfo _networkInfo;
+  final RemoteDataSource _remoteDataSource;
 
-  MangaRepositoryImpl({required NetworkInfo networkInfo})
-      : _networkInfo = networkInfo;
-
-  @override
-  Future<List<Manga>> fetchFavoriteMangas() {
-    // TODO: implement fetchFavoriteMangas
-    throw UnimplementedError();
-  }
+  MangaRepositoryImpl({
+    required NetworkInfo networkInfo,
+    required RemoteDataSource remoteDataSource,
+  })  : _networkInfo = networkInfo,
+        _remoteDataSource = remoteDataSource;
 
   @override
-  Stream<List<Manga>> watchFavoriteMangas() {
-    // TODO: implement watchFavoriteMangas
-    throw UnimplementedError();
+  Future<List<Manga>> searchMangas(String title) async {
+    final isConnected = await _networkInfo.isConnected;
+    if (isConnected) {
+      final mangas = await _remoteDataSource.getMangasFromTitle(title);
+      return mangas;
+    }
+    return [];
   }
 }
 
 final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
   final networkInfo = ref.watch(networkInfoProvider);
-  return MangaRepositoryImpl(networkInfo: networkInfo);
+  final remoteDataSource = ref.watch(remoteDataSourceProvider);
+  return MangaRepositoryImpl(
+    networkInfo: networkInfo,
+    remoteDataSource: remoteDataSource,
+  );
 });

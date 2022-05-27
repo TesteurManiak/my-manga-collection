@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class HttpClient {
   Future<T?> get<T>(Uri uri);
@@ -15,3 +16,10 @@ class DioClient implements HttpClient {
     return response.data;
   }
 }
+
+final dioProvider = Provider<Dio>((_) => Dio());
+
+final httpClientProvider = Provider<HttpClient>((ref) {
+  final dio = ref.watch(dioProvider);
+  return DioClient(dio: dio);
+});

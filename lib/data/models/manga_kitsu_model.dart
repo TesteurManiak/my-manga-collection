@@ -7,7 +7,8 @@ class MangaKitsuModel extends Manga {
     required super.link,
     required super.synopsis,
     required super.title,
-    required super.images,
+    required super.posterImage,
+    required super.coverImage,
     required super.chapterCount,
     required super.volumeCount,
     required super.volumeOwned,
@@ -15,18 +16,24 @@ class MangaKitsuModel extends Manga {
   });
 
   factory MangaKitsuModel.fromJson(Map<String, dynamic> json) {
-    final title = (json['attributes']['canonicalTitle'] as String)
+    final attributes = json['attributes'] as Map<String, dynamic>;
+    final title = (attributes['canonicalTitle'] as String)
         .replaceAll(RegExp(r'[^\s\w]'), '');
     return MangaKitsuModel(
       id: json['id'] as String,
       link: json['links']['self'] as String,
-      synopsis: json['attributes']['synopsis'] as String,
+      synopsis: attributes['synopsis'] as String,
       title: title,
-      images: MangaImagesKitsuModel.fromJson(
-        json['attributes']['posterImage'] as Map<String, dynamic>,
+      posterImage: MangaImagesKitsuModel.fromJson(
+        attributes['posterImage'] as Map<String, dynamic>,
       ),
-      chapterCount: json['attributes']['chapterCount'] as int,
-      volumeCount: json['attributes']['volumeCount'] as int,
+      coverImage: attributes['coverImage'] != null
+          ? MangaImagesKitsuModel.fromJson(
+              attributes['coverImage'] as Map<String, dynamic>,
+            )
+          : null,
+      chapterCount: attributes['chapterCount'] as int?,
+      volumeCount: attributes['volumeCount'] as int?,
       volumeOwned: List<int>.from((json['volumeOwned'] as Iterable?) ?? []),
       isFavorite: json['isFavorite'] as bool? ?? false,
     );

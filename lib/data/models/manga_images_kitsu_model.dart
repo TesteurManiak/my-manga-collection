@@ -11,11 +11,11 @@ class MangaImagesKitsuModel extends MangaImages {
 
   factory MangaImagesKitsuModel.fromJson(Map<String, dynamic> json) {
     return MangaImagesKitsuModel(
-      tinyUrl: json['tiny'] as String,
-      smallUrl: json['small'] as String,
-      mediumUrl: json['medium'] as String,
-      largeUrl: json['large'] as String,
-      originalUrl: json['original'] as String,
+      tinyUrl: json['tiny'] as String?,
+      smallUrl: json['small'] as String?,
+      mediumUrl: json['medium'] as String?,
+      largeUrl: json['large'] as String?,
+      originalUrl: json['original'] as String?,
     );
   }
 }

@@ -10,9 +10,11 @@ class CollectionView extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _CollectionViewState();
 }
 
-class _CollectionViewState extends ConsumerState<CollectionView> {
+class _CollectionViewState extends ConsumerState<CollectionView>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Collection'.hardcoded),
@@ -28,4 +30,7 @@ class _CollectionViewState extends ConsumerState<CollectionView> {
   }
 
   void _searchPressed() {}
+
+  @override
+  bool get wantKeepAlive => true;
 }

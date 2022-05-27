@@ -9,9 +9,10 @@ class Manga extends Equatable {
   final String link;
   final String synopsis;
   final String title;
-  final MangaImages images;
-  final int chapterCount;
-  final int volumeCount;
+  final MangaImages posterImage;
+  final MangaImages? coverImage;
+  final int? chapterCount;
+  final int? volumeCount;
   final List<int> volumeOwned;
   final bool isFavorite;
 
@@ -20,7 +21,8 @@ class Manga extends Equatable {
     required this.link,
     required this.synopsis,
     required this.title,
-    required this.images,
+    required this.posterImage,
+    required this.coverImage,
     required this.chapterCount,
     required this.volumeCount,
     required this.volumeOwned,
@@ -33,7 +35,8 @@ class Manga extends Equatable {
         link,
         synopsis,
         title,
-        images,
+        posterImage,
+        coverImage,
         chapterCount,
         volumeCount,
         volumeOwned,
@@ -45,7 +48,8 @@ class Manga extends Equatable {
     String? link,
     String? synopsis,
     String? title,
-    MangaImages? images,
+    MangaImages? posterImage,
+    MangaImages? coverImage,
     int? chapterCount,
     int? volumeCount,
     List<int>? volumeOwned,
@@ -56,7 +60,8 @@ class Manga extends Equatable {
       link: link ?? this.link,
       synopsis: synopsis ?? this.synopsis,
       title: title ?? this.title,
-      images: images ?? this.images,
+      posterImage: posterImage ?? this.posterImage,
+      coverImage: coverImage ?? this.coverImage,
       chapterCount: chapterCount ?? this.chapterCount,
       volumeCount: volumeCount ?? this.volumeCount,
       volumeOwned: volumeOwned ?? this.volumeOwned,
@@ -67,13 +72,14 @@ class Manga extends Equatable {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
-      'link': {'self': link},
+      'links': {'self': link},
       'attributes': {
         'synopsis': synopsis,
         'canonicalTitle': title,
-        'chapterCount': chapterCount,
-        'volumeCount': volumeCount,
-        'posterImage': images.toJson(),
+        if (chapterCount != null) 'chapterCount': chapterCount,
+        if (volumeCount != null) 'volumeCount': volumeCount,
+        'posterImage': posterImage.toJson(),
+        if (coverImage != null) 'coverImage': coverImage?.toJson(),
       },
       'volumeOwned': volumeOwned,
       'isFavorite': isFavorite,

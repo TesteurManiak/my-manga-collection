@@ -4,19 +4,16 @@ import 'presentation/views/home/home_view.dart';
 
 GoRouter routerGenerator({String? initialLocation}) {
   return GoRouter(
-    initialLocation: initialLocation ?? '${AppRoute.home.path}/1',
+    initialLocation: initialLocation ?? AppRoute.home.path,
     routes: [
       GoRoute(
         path: AppRoute.root.path,
-        redirect: (_) => '${AppRoute.home.path}/1',
+        redirect: (_) => AppRoute.home.path,
       ),
       GoRoute(
         name: AppRoute.home.name,
-        path: '${AppRoute.home.path}/:index',
-        builder: (_, state) {
-          final index = int.parse(state.params['index'] as String);
-          return HomeView(key: state.pageKey, index: index);
-        },
+        path: AppRoute.home.path,
+        builder: (_, __) => const HomeView(),
       ),
     ],
   );

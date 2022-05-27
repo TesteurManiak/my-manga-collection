@@ -1,0 +1,195 @@
+{
+    "id": "35",
+    "type": "manga",
+    "links": {
+        "self": "https://kitsu.io/api/edge/manga/35"
+    },
+    "attributes": {
+        "createdAt": "2013-12-18T13:48:27.540Z",
+        "updatedAt": "2022-05-27T18:00:13.255Z",
+        "slug": "naruto",
+        "synopsis": "Before Naruto's birth, a great demon fox had attacked the Hidden Leaf Village. A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers. Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village. Desiring the respect he never received, Naruto works towards his dream with fellow friends Sasuke and Sakura and mentor Kakashi as they go through many trials and battles that come with being a ninja.",
+        "description": "Before Naruto's birth, a great demon fox had attacked the Hidden Leaf Village. A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers. Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village. Desiring the respect he never received, Naruto works towards his dream with fellow friends Sasuke and Sakura and mentor Kakashi as they go through many trials and battles that come with being a ninja.",
+        "coverImageTopOffset": 125,
+        "titles": {
+            "en": "Naruto",
+            "en_jp": "Naruto",
+            "ja_jp": "NARUTO―ナルト―"
+        },
+        "canonicalTitle": "Naruto",
+        "abbreviatedTitles": [],
+        "averageRating": "82.41",
+        "ratingFrequencies": {
+            "2": "117",
+            "3": "1",
+            "4": "85",
+            "5": "1",
+            "6": "117",
+            "7": "6",
+            "8": "537",
+            "9": "5",
+            "10": "484",
+            "11": "19",
+            "12": "962",
+            "13": "77",
+            "14": "3406",
+            "15": "103",
+            "16": "2396",
+            "17": "142",
+            "18": "1863",
+            "19": "80",
+            "20": "6715"
+        },
+        "userCount": 23954,
+        "favoritesCount": 1196,
+        "startDate": "1999-09-21",
+        "endDate": "2014-11-10",
+        "nextRelease": null,
+        "popularityRank": 25,
+        "ratingRank": 300,
+        "ageRating": "G",
+        "ageRatingGuide": null,
+        "subtype": "manga",
+        "status": "finished",
+        "tba": null,
+        "posterImage": {
+            "tiny": "https://media.kitsu.io/manga/poster_images/35/tiny.jpg",
+            "large": "https://media.kitsu.io/manga/poster_images/35/large.jpg",
+            "small": "https://media.kitsu.io/manga/poster_images/35/small.jpg",
+            "medium": "https://media.kitsu.io/manga/poster_images/35/medium.jpg",
+            "original": "https://media.kitsu.io/manga/poster_images/35/original.png",
+            "meta": {
+                "dimensions": {
+                    "tiny": {
+                        "width": null,
+                        "height": null
+                    },
+                    "large": {
+                        "width": null,
+                        "height": null
+                    },
+                    "small": {
+                        "width": null,
+                        "height": null
+                    },
+                    "medium": {
+                        "width": null,
+                        "height": null
+                    }
+                }
+            }
+        },
+        "coverImage": {
+            "tiny": "https://media.kitsu.io/manga/cover_images/35/tiny.jpg",
+            "large": "https://media.kitsu.io/manga/cover_images/35/large.jpg",
+            "small": "https://media.kitsu.io/manga/cover_images/35/small.jpg",
+            "original": "https://media.kitsu.io/manga/cover_images/35/original.jpg",
+            "meta": {
+                "dimensions": {
+                    "tiny": {
+                        "width": null,
+                        "height": null
+                    },
+                    "large": {
+                        "width": null,
+                        "height": null
+                    },
+                    "small": {
+                        "width": null,
+                        "height": null
+                    }
+                }
+            }
+        },
+        "chapterCount": 700,
+        "volumeCount": 72,
+        "serialization": "Shounen Jump (Weekly)",
+        "mangaType": "manga"
+    },
+    "relationships": {
+        "genres": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/genres",
+                "related": "https://kitsu.io/api/edge/manga/35/genres"
+            }
+        },
+        "categories": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/categories",
+                "related": "https://kitsu.io/api/edge/manga/35/categories"
+            }
+        },
+        "castings": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/castings",
+                "related": "https://kitsu.io/api/edge/manga/35/castings"
+            }
+        },
+        "installments": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/installments",
+                "related": "https://kitsu.io/api/edge/manga/35/installments"
+            }
+        },
+        "mappings": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/mappings",
+                "related": "https://kitsu.io/api/edge/manga/35/mappings"
+            }
+        },
+        "reviews": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/reviews",
+                "related": "https://kitsu.io/api/edge/manga/35/reviews"
+            }
+        },
+        "mediaRelationships": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/media-relationships",
+                "related": "https://kitsu.io/api/edge/manga/35/media-relationships"
+            }
+        },
+        "characters": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/characters",
+                "related": "https://kitsu.io/api/edge/manga/35/characters"
+            }
+        },
+        "staff": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/staff",
+                "related": "https://kitsu.io/api/edge/manga/35/staff"
+            }
+        },
+        "productions": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/productions",
+                "related": "https://kitsu.io/api/edge/manga/35/productions"
+            }
+        },
+        "quotes": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/quotes",
+                "related": "https://kitsu.io/api/edge/manga/35/quotes"
+            }
+        },
+        "chapters": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/chapters",
+                "related": "https://kitsu.io/api/edge/manga/35/chapters"
+            }
+        },
+        "mangaCharacters": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/manga-characters",
+                "related": "https://kitsu.io/api/edge/manga/35/manga-characters"
+            }
+        },
+        "mangaStaff": {
+            "links": {
+                "self": "https://kitsu.io/api/edge/manga/35/relationships/manga-staff",
+                "related": "https://kitsu.io/api/edge/manga/35/manga-staff"
+            }
+        }
+    }
+}
