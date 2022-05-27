@@ -20,6 +20,9 @@ class NetworkInfoImpl implements NetworkInfo {
   }
 }
 
-final networkInfoProvider = Provider<NetworkInfo>((_) {
-  return NetworkInfoImpl(connectivity: Connectivity());
+final connectivityProvider = Provider<Connectivity>((_) => Connectivity());
+
+final networkInfoProvider = Provider<NetworkInfo>((ref) {
+  final connectivity = ref.watch(connectivityProvider);
+  return NetworkInfoImpl(connectivity: connectivity);
 });
