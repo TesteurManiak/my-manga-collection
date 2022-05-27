@@ -45,7 +45,6 @@ Simply browse the manga available on the API and add them to your collection. Yo
 * [dynamic_theme](https://github.com/TesteurManiak/dynamic_theme)
 * [easy_localization](https://pub.dev/packages/easy_localization)
 * [equatable](https://pub.dev/packages/equatable)
-* [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)
 * [flutter_riverpod](https://pub.dev/packages/flutter_riverpod)
 * [go_router](https://pub.dev/packages/go_router)
 * [hive](https://pub.dev/packages/hive)
