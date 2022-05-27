@@ -1,0 +1,23 @@
+{
+    "browseView": {
+        "emptyList": "No manga found.",
+        "error": "An error occurred while loading the list of manga.",
+        "searchHint": "Manga name..."
+    },
+    "collectionView": {
+        "title": "Collection"
+    },
+    "homeView": {
+        "item1": "Add Manga",
+        "item2": "Collection",
+        "item3": "Settings"
+    },
+    "mangaView": {
+        "chapters": "{} Chapters - {} Volumes",
+        "unknown": "Unknown"
+    },
+    "settingsView": {
+        "darkMode": "Dark Mode",
+        "title": "Settings"
+    }
+}

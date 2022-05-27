@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/extensions/string_extensions.dart';
 import '../../domain/entities/manga.dart';
 import '../style/text_styles.dart';
 import 'widgets/manga_header.dart';
@@ -45,8 +45,13 @@ class MangaView extends ConsumerWidget {
             child: Text(manga.synopsis, textAlign: TextAlign.center),
           ),
           Text(
-            "${manga.chapterCount} Chapters - ${manga.volumeCount} Volumes"
-                .hardcoded,
+            tr(
+              'mangaView.chapters',
+              args: [
+                manga.chapterCount?.toString() ?? tr('mangaView.unknown'),
+                manga.volumeCount?.toString() ?? tr('mangaView.unknown'),
+              ],
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 15),

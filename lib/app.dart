@@ -1,4 +1,5 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/style/themes.dart';
@@ -24,6 +25,9 @@ class _MyAppState extends State<MyApp> {
           themeMode: themeMode,
           routerDelegate: _router.routerDelegate,
           routeInformationParser: _router.routeInformationParser,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
         );
       },
     );
