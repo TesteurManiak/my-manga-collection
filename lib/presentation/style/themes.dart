@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
+import 'text_styles.dart';
 
 abstract class AppTheme {
   static final _baseLight = ThemeData.light();
@@ -17,7 +18,7 @@ abstract class AppTheme {
       scaffoldBackgroundColor: themeColors.background,
       cardColor: themeColors.background,
       backgroundColor: themeColors.background,
-      extensions: {themeColors},
+      extensions: {themeColors, const AppTextStyles()},
       appBarTheme: _baseLight.appBarTheme.copyWith(
         backgroundColor: themeColors.primary,
       ),
@@ -34,7 +35,7 @@ abstract class AppTheme {
       chipTheme: _baseDark.chipTheme.copyWith(
         secondarySelectedColor: themeColors.chipSelection,
       ),
-      extensions: {themeColors},
+      extensions: {themeColors, const AppTextStyles()},
       appBarTheme: _baseDark.appBarTheme.copyWith(
         backgroundColor: themeColors.primary,
       ),

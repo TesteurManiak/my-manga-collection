@@ -12,7 +12,6 @@ class MangaKitsuModel extends Manga {
     required super.chapterCount,
     required super.volumeCount,
     required super.volumeOwned,
-    required super.isFavorite,
   });
 
   factory MangaKitsuModel.fromJson(Map<String, dynamic> json) {
@@ -35,7 +34,6 @@ class MangaKitsuModel extends Manga {
       chapterCount: attributes['chapterCount'] as int?,
       volumeCount: attributes['volumeCount'] as int?,
       volumeOwned: List<int>.from((json['volumeOwned'] as Iterable?) ?? []),
-      isFavorite: json['isFavorite'] as bool? ?? false,
     );
   }
 }

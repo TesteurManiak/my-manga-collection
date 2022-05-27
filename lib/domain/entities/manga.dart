@@ -14,7 +14,6 @@ class Manga extends Equatable {
   final int? chapterCount;
   final int? volumeCount;
   final List<int> volumeOwned;
-  final bool isFavorite;
 
   const Manga({
     required this.id,
@@ -26,7 +25,6 @@ class Manga extends Equatable {
     required this.chapterCount,
     required this.volumeCount,
     required this.volumeOwned,
-    required this.isFavorite,
   });
 
   @override
@@ -40,7 +38,6 @@ class Manga extends Equatable {
         chapterCount,
         volumeCount,
         volumeOwned,
-        isFavorite,
       ];
 
   Manga copyWith({
@@ -65,7 +62,6 @@ class Manga extends Equatable {
       chapterCount: chapterCount ?? this.chapterCount,
       volumeCount: volumeCount ?? this.volumeCount,
       volumeOwned: volumeOwned ?? this.volumeOwned,
-      isFavorite: isFavorite ?? this.isFavorite,
     );
   }
 
@@ -82,7 +78,6 @@ class Manga extends Equatable {
         if (coverImage != null) 'coverImage': coverImage?.toJson(),
       },
       'volumeOwned': volumeOwned,
-      'isFavorite': isFavorite,
     };
   }
 

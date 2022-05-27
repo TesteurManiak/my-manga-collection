@@ -32,6 +32,20 @@ class MangaImages extends Equatable {
     }
   }
 
+  String get biggestImageUrl {
+    if (originalUrl != null) {
+      return originalUrl!;
+    } else if (largeUrl != null) {
+      return largeUrl!;
+    } else if (mediumUrl != null) {
+      return mediumUrl!;
+    } else if (smallUrl != null) {
+      return smallUrl!;
+    } else {
+      return tinyUrl!;
+    }
+  }
+
   @override
   List<Object?> get props => [
         tinyUrl,

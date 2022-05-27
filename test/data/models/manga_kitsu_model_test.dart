@@ -34,7 +34,6 @@ void main() {
         chapterCount: 700,
         volumeCount: 72,
         volumeOwned: [],
-        isFavorite: false,
       );
 
       test('parse file: naruto.json', () {
