@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../domain/entities/manga.dart';
+import '../../../router.dart';
 import '../../controllers/manga/manga_controller.dart';
 import '../../style/text_styles.dart';
 import 'widgets/manga_header.dart';
@@ -23,6 +25,12 @@ class MangaView extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          if (isFavorite)
+            IconButton(
+              onPressed: () => context
+                  .pushNamed(AppRoute.edit.name, params: {'id': manga.id}),
+              icon: const Icon(Icons.edit),
+            ),
           IconButton(
             icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
             onPressed: () {

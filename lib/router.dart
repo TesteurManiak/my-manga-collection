@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import 'domain/entities/manga.dart';
+import 'presentation/views/edit/edit_view.dart';
 import 'presentation/views/home/home_view.dart';
 import 'presentation/views/manga/manga_view.dart';
 
@@ -21,6 +22,13 @@ GoRouter routerGenerator({String? initialLocation}) {
             name: AppRoute.manga.name,
             path: AppRoute.manga.path,
             builder: (_, state) => MangaView(manga: state.extra as Manga),
+            routes: [
+              GoRoute(
+                name: AppRoute.edit.name,
+                path: AppRoute.edit.path,
+                builder: (_, state) => EditView(id: state.params['id']!),
+              ),
+            ],
           ),
         ],
       ),
@@ -31,7 +39,8 @@ GoRouter routerGenerator({String? initialLocation}) {
 enum AppRoute {
   root('/'),
   home('/home'),
-  manga('manga');
+  manga('manga'),
+  edit('edit/:id');
 
   final String path;
 
