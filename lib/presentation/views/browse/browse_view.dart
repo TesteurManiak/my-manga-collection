@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/extensions/string_extensions.dart';
 import '../../controllers/browse/browse_controller.dart';
 import 'widgets/manga_tile.dart';
 
@@ -42,7 +42,7 @@ class _BrowseViewState extends ConsumerState<BrowseView>
           controller: _textController,
           autocorrect: false,
           decoration: InputDecoration(
-            hintText: 'Manga name...'.hardcoded,
+            hintText: tr('browseView.searchHint'),
             suffixIcon: IconButton(
               icon: const Icon(Icons.clear),
               onPressed: _textController.clear,
@@ -55,9 +55,9 @@ class _BrowseViewState extends ConsumerState<BrowseView>
       body: pageState.isLoading
           ? const Center(child: CircularProgressIndicator())
           : pageState.hasError
-              ? Center(child: Text('An error occured'.hardcoded))
+              ? Center(child: Text(tr('browseView.error')))
               : pageState.mangas.isEmpty
-                  ? Center(child: Text('No mangas to display'.hardcoded))
+                  ? Center(child: Text(tr('browseView.emptyList')))
                   : ListView.separated(
                       padding: const EdgeInsets.all(8),
                       itemCount: pageState.mangas.length,

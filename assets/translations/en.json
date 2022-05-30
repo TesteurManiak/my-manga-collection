@@ -8,7 +8,7 @@
         "title": "Collection"
     },
     "homeView": {
-        "item1": "Add Manga",
+        "item1": "Search",
         "item2": "Collection",
         "item3": "Settings"
     },
@@ -18,6 +18,7 @@
     },
     "settingsView": {
         "darkMode": "Dark Mode",
-        "title": "Settings"
+        "title": "Settings",
+        "language": "Language"
     }
 }

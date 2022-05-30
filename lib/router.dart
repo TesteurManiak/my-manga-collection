@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
 
 import 'domain/entities/manga.dart';
-import 'presentation/manga/manga_view.dart';
 import 'presentation/views/home/home_view.dart';
+import 'presentation/views/manga/manga_view.dart';
 
 GoRouter routerGenerator({String? initialLocation}) {
   return GoRouter(

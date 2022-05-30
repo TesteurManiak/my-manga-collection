@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../domain/entities/manga.dart';
+import '../../../../domain/entities/manga.dart';
 
 class MangaHeader extends StatelessWidget {
   final Manga manga;

@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/extensions/string_extensions.dart';
 import '../../style/colors.dart';
 import '../browse/browse_view.dart';
 import '../collection/collection_view.dart';
@@ -46,15 +46,15 @@ class _HomeViewState extends ConsumerState<HomeView> {
         items: [
           BottomNavigationBarItem(
             icon: const Icon(Icons.add),
-            label: "Add Manga".hardcoded,
+            label: tr('homeView.item1'),
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.book),
-            label: "Collection".hardcoded,
+            label: tr('homeView.item2'),
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),
-            label: "Settings".hardcoded,
+            label: tr('homeView.item3'),
           ),
         ],
       ),

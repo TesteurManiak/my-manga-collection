@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../domain/entities/manga.dart';
-import '../style/text_styles.dart';
+import '../../../domain/entities/manga.dart';
+import '../../style/text_styles.dart';
 import 'widgets/manga_header.dart';
 
 class MangaView extends ConsumerWidget {

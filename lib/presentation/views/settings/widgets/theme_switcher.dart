@@ -1,7 +1,6 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/extensions/string_extensions.dart';
 
 class ThemeSwitcher extends StatelessWidget {
   const ThemeSwitcher({Key? key}) : super(key: key);
@@ -11,7 +10,7 @@ class ThemeSwitcher extends StatelessWidget {
     final brightness = Theme.of(context).brightness;
     final isDark = brightness == Brightness.dark;
     return SwitchListTile(
-      title: Text('Dark Mode'.hardcoded),
+      title: Text(tr('settingsView.darkMode')),
       value: isDark,
       onChanged: (_) => DynamicTheme.of(context).toggleThemeMode(),
     );
