@@ -1,12 +1,25 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+part 'manga_images.g.dart';
+
+@HiveType(typeId: 2)
 class MangaImages extends Equatable {
+  @HiveField(0)
   final String? tinyUrl;
+
+  @HiveField(1)
   final String? smallUrl;
+
+  @HiveField(2)
   final String? mediumUrl;
+
+  @HiveField(3)
   final String? largeUrl;
+
+  @HiveField(4)
   final String? originalUrl;
 
   const MangaImages({

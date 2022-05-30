@@ -1,18 +1,39 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'manga_images.dart';
 
+part 'manga.g.dart';
+
+@HiveType(typeId: 1)
 class Manga extends Equatable {
+  @HiveField(0)
   final String id;
+
+  @HiveField(1)
   final String link;
+
+  @HiveField(2)
   final String synopsis;
+
+  @HiveField(3)
   final String title;
+
+  @HiveField(4)
   final MangaImages posterImage;
+
+  @HiveField(5)
   final MangaImages? coverImage;
+
+  @HiveField(6)
   final int? chapterCount;
+
+  @HiveField(7)
   final int? volumeCount;
+
+  @HiveField(8)
   final List<int> volumeOwned;
 
   const Manga({

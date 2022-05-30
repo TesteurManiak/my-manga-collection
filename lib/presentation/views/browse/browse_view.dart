@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../controllers/browse/browse_controller.dart';
-import 'widgets/manga_tile.dart';
+import '../common/manga_list.dart';
 
 class BrowseView extends ConsumerStatefulWidget {
   const BrowseView({Key? key}) : super(key: key);
@@ -58,15 +58,7 @@ class _BrowseViewState extends ConsumerState<BrowseView>
               ? Center(child: Text(tr('browseView.error')))
               : pageState.mangas.isEmpty
                   ? Center(child: Text(tr('browseView.emptyList')))
-                  : ListView.separated(
-                      padding: const EdgeInsets.all(8),
-                      itemCount: pageState.mangas.length,
-                      itemBuilder: (_, index) {
-                        final manga = pageState.mangas[index];
-                        return MangaTile(manga: manga);
-                      },
-                      separatorBuilder: (_, __) => const Divider(),
-                    ),
+                  : MangaList(pageState.mangas),
     );
   }
 

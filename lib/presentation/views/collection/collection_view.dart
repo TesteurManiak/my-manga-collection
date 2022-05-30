@@ -2,6 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/extensions/string_extensions.dart';
+import '../../../data/repositories/manga_repository_impl.dart';
+import '../../../domain/entities/manga.dart';
+import '../common/async_value_widget.dart';
+import '../common/manga_list.dart';
+
 class CollectionView extends ConsumerStatefulWidget {
   const CollectionView({Key? key}) : super(key: key);
 
@@ -24,7 +30,22 @@ class _CollectionViewState extends ConsumerState<CollectionView>
           ),
         ],
       ),
-      body: Container(),
+      body: Consumer(
+        builder: (context, ref, _) {
+          final value = ref.watch(favoriteChangeProvider);
+          return AsyncValueWidget<List<Manga>>(
+            value: value,
+            data: (data) {
+              if (data.isEmpty) {
+                return Center(
+                  child: Text('No manga in collection'.hardcoded),
+                );
+              }
+              return MangaList(data);
+            },
+          );
+        },
+      ),
     );
   }
 

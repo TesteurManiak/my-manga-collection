@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/entities/manga.dart';
+import '../../controllers/manga/manga_controller.dart';
 import '../../style/text_styles.dart';
 import 'widgets/manga_header.dart';
 
@@ -11,10 +12,13 @@ class MangaView extends ConsumerWidget {
 
   const MangaView({Key? key, required this.manga}) : super(key: key);
 
-  final isFavorite = false;
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final pageState = ref.watch(mangaControllerProvider(manga));
+    final isFavorite = pageState.isFavorite;
+
+    final controller = ref.read(mangaControllerProvider(manga).notifier);
+
     final appTextStyles = Theme.of(context).extension<AppTextStyles>();
     return Scaffold(
       appBar: AppBar(
@@ -23,9 +27,9 @@ class MangaView extends ConsumerWidget {
             icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
             onPressed: () {
               if (isFavorite) {
-                // TODO: remove from favorites
+                controller.removeFromFavorite();
               } else {
-                // TODO: add to favorites
+                controller.addToFavorite();
               }
             },
           ),
