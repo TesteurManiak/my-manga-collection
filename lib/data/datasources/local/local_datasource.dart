@@ -10,7 +10,7 @@ abstract class LocalDataSource {
   Future<List<Manga>> getMangasFromTitle(String title);
   Future<void> saveManga(Manga manga);
   Future<void> removeManga(Manga manga);
-  Future<void> dispose();
+  Future<void> updateManga(Manga manga);
   Stream<List<Manga>> watchMangas();
 }
 
@@ -57,12 +57,10 @@ class HiveDataSource implements LocalDataSource {
   }
 
   @override
-  Future<void> dispose() {
-    return _hiveInterface.close();
-  }
+  Future<void> removeManga(Manga manga) => _mangasBox.delete(manga.id);
 
   @override
-  Future<void> removeManga(Manga manga) => _mangasBox.delete(manga.id);
+  Future<void> updateManga(Manga manga) => _mangasBox.put(manga.id, manga);
 }
 
 final hiveProvider = Provider<HiveInterface>((_) => Hive);

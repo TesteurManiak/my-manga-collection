@@ -23,7 +23,7 @@ class MangaTile extends StatelessWidget {
       ),
       title: Text(manga.title),
       trailing: const Icon(Icons.arrow_forward_ios_rounded),
-      onTap: () => context.pushNamed(AppRoute.manga.name, extra: manga),
+      onTap: () => context.pushNamed(AppRoute.manga.name, extra: manga.id),
     );
   }
 }

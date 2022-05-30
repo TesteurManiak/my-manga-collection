@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 
-import 'domain/entities/manga.dart';
 import 'presentation/views/edit/edit_view.dart';
 import 'presentation/views/home/home_view.dart';
 import 'presentation/views/manga/manga_view.dart';
@@ -21,7 +20,7 @@ GoRouter routerGenerator({String? initialLocation}) {
           GoRoute(
             name: AppRoute.manga.name,
             path: AppRoute.manga.path,
-            builder: (_, state) => MangaView(manga: state.extra as Manga),
+            builder: (_, state) => MangaView(id: state.extra as String),
             routes: [
               GoRoute(
                 name: AppRoute.edit.name,

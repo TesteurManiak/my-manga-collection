@@ -30,5 +30,8 @@ class BrowseController extends StateNotifier<BrowseState> {
 final browseControllerProvider =
     StateNotifierProvider.autoDispose<BrowseController, BrowseState>((ref) {
   final repository = ref.watch(mangaRepositoryProvider);
+
+  ref.onDispose(repository.dispose);
+
   return BrowseController(mangaRepository: repository);
 });

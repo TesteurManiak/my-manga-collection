@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../domain/entities/manga.dart';
 import '../../../router.dart';
 import '../../controllers/manga/manga_controller.dart';
 import '../../style/text_styles.dart';
 import 'widgets/manga_header.dart';
 
 class MangaView extends ConsumerWidget {
-  final Manga manga;
+  final String id;
 
-  const MangaView({Key? key, required this.manga}) : super(key: key);
+  const MangaView({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pageState = ref.watch(mangaControllerProvider(manga));
-    final isFavorite = pageState.isFavorite;
+    final pageState = ref.watch(mangaControllerProvider(id));
+    final controller = ref.watch(mangaControllerProvider(id).notifier);
 
-    final controller = ref.read(mangaControllerProvider(manga).notifier);
+    final isFavorite = pageState.isFavorite;
+    final currentManga = pageState.manga;
 
     final appTextStyles = Theme.of(context).extension<AppTextStyles>();
     return Scaffold(
@@ -27,8 +27,10 @@ class MangaView extends ConsumerWidget {
         actions: [
           if (isFavorite)
             IconButton(
-              onPressed: () => context
-                  .pushNamed(AppRoute.edit.name, params: {'id': manga.id}),
+              onPressed: () => context.pushNamed(
+                AppRoute.edit.name,
+                params: {'id': id},
+              ),
               icon: const Icon(Icons.edit),
             ),
           IconButton(
@@ -45,23 +47,27 @@ class MangaView extends ConsumerWidget {
       ),
       body: ListView(
         children: [
-          MangaHeader(manga: manga),
+          MangaHeader(manga: currentManga),
           const SizedBox(height: 15),
           Text(
-            manga.title,
+            currentManga.title,
             style: appTextStyles?.mangaTitle,
             textAlign: TextAlign.center,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-            child: Text(manga.synopsis, textAlign: TextAlign.center),
+            child: Text(
+              pageState.manga.synopsis,
+              textAlign: TextAlign.center,
+            ),
           ),
           Text(
             tr(
               'mangaView.chapters',
               args: [
-                manga.chapterCount?.toString() ?? tr('mangaView.unknown'),
-                manga.volumeCount?.toString() ?? tr('mangaView.unknown'),
+                currentManga.chapterCount?.toString() ??
+                    tr('mangaView.unknown'),
+                currentManga.volumeCount?.toString() ?? tr('mangaView.unknown'),
               ],
             ),
             textAlign: TextAlign.center,

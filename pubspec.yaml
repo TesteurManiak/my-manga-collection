@@ -42,13 +42,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/
     - assets/translations/
 
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/ic_launcher.png"
+  image_path: "assets/icons/ic_launcher.png"
+  image_path_ios: "assets/icons/ic_launcher_ios.png"
 
 flutter_native_splash:
   color: "#F5F5F5"

@@ -52,8 +52,13 @@ class MangaRepositoryImpl implements MangaRepository {
   }
 
   @override
-  Future<void> addMangaToFavorite(Manga manga) {
-    return _localDataSource.saveManga(manga);
+  Future<Result<void, Object>> addMangaToFavorite(Manga manga) async {
+    try {
+      final result = await _localDataSource.saveManga(manga);
+      return Result.value(result);
+    } catch (e) {
+      return Result.error(e);
+    }
   }
 
   @override
@@ -67,17 +72,38 @@ class MangaRepositoryImpl implements MangaRepository {
   }
 
   @override
-  Future<void> removeMangaFromFavorite(Manga manga) {
-    return _localDataSource.removeManga(manga);
+  Future<Result<void, Object>> removeMangaFromFavorite(Manga manga) async {
+    try {
+      final result = _localDataSource.removeManga(manga);
+      return Result.value(result);
+    } catch (e) {
+      return Result.error(e);
+    }
+  }
+
+  @override
+  Future<Result<void, Object>> editManga(Manga newManga) async {
+    try {
+      final result = await _localDataSource.updateManga(newManga);
+      return Result.value(result);
+    } catch (e) {
+      return Result.error(e);
+    }
+  }
+
+  @override
+  List<Manga> getFavorites() => _favoriteMangaSubject.value;
+
+  @override
+  Future<void> dispose() async {
+    await _favoriteMangaSubject.close();
   }
 }
 
-final mangaRepositoryProvider = Provider.autoDispose<MangaRepository>((ref) {
+final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
   final networkInfo = ref.watch(networkInfoProvider);
   final remoteDataSource = ref.watch(remoteDataSourceProvider);
   final localDataSource = ref.watch(localDataSourceProvider);
-
-  ref.onDispose(localDataSource.dispose);
 
   return MangaRepositoryImpl(
     networkInfo: networkInfo,
@@ -88,5 +114,8 @@ final mangaRepositoryProvider = Provider.autoDispose<MangaRepository>((ref) {
 
 final favoriteChangeProvider = StreamProvider.autoDispose<List<Manga>>((ref) {
   final repository = ref.watch(mangaRepositoryProvider);
+
+  ref.onDispose(repository.dispose);
+
   return repository.watchFavorites();
 });
