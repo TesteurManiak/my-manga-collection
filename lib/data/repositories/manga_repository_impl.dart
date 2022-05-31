@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -26,8 +27,8 @@ class MangaRepositoryImpl implements MangaRepository {
     unawaited(fetchFavorites());
   }
 
-  final _favoriteMangaSubject = BehaviorSubject<List<Manga>>();
-  final _fetchedMangaSubject = BehaviorSubject<List<Manga>>();
+  final _favoriteMangaSubject = BehaviorSubject<List<Manga>>.seeded([]);
+  final _fetchedMangaSubject = BehaviorSubject<List<Manga>>.seeded([]);
 
   @override
   Future<Result<List<Manga>, Object>> searchMangas(String title) async {
@@ -76,6 +77,13 @@ class MangaRepositoryImpl implements MangaRepository {
   @override
   Future<Result<void, Object>> removeMangaFromFavorite(Manga manga) async {
     try {
+      final fetchedMangas = List<Manga>.from(_fetchedMangaSubject.value);
+      final mangaExists =
+          fetchedMangas.firstWhereOrNull((e) => e.id == manga.id) != null;
+      if (!mangaExists) {
+        fetchedMangas.add(manga);
+      }
+      _fetchedMangaSubject.add(fetchedMangas);
       final result = _localDataSource.removeManga(manga);
       return Result.value(result);
     } catch (e) {
@@ -100,10 +108,12 @@ class MangaRepositoryImpl implements MangaRepository {
   List<Manga> getFetchedMangas() => _fetchedMangaSubject.value;
 
   @override
-  Future<void> dispose() async {
-    await _favoriteMangaSubject.close();
-    await _fetchedMangaSubject.close();
-  }
+  Manga? getFavoriteFromId(String id) =>
+      getFavorites().firstWhereOrNull((e) => e.id == id);
+
+  @override
+  Manga? getMangaFromId(String id) =>
+      getFetchedMangas().firstWhereOrNull((e) => e.id == id);
 }
 
 final mangaRepositoryProvider = Provider<MangaRepository>((ref) {

@@ -16,10 +16,10 @@ class MangaView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pageState = ref.watch(mangaControllerProvider(id));
-    final controller = ref.watch(mangaControllerProvider(id).notifier);
+    final controller = ref.read(mangaControllerProvider(id).notifier);
 
     final isFavorite = pageState.isFavorite;
-    final currentManga = pageState.manga;
+    final currentManga = controller.getMangaFromId(id);
     final volumeCount = currentManga.volumeCount;
 
     return Scaffold(
@@ -40,9 +40,9 @@ class MangaView extends ConsumerWidget {
                 icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
                 onPressed: () {
                   if (isFavorite) {
-                    controller.removeFromFavorite();
+                    controller.removeFromFavorite(currentManga);
                   } else {
-                    controller.addToFavorite();
+                    controller.addToFavorite(currentManga);
                   }
                 },
               ),
@@ -67,6 +67,7 @@ class MangaView extends ConsumerWidget {
                   (context, index) => SelectionTile(
                     volumeNumber: index + 1,
                     manga: currentManga,
+                    controller: controller,
                   ),
                   childCount: volumeCount,
                 ),

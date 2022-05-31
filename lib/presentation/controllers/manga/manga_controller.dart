@@ -16,21 +16,20 @@ class MangaController extends StateNotifier<MangaState> {
 
   MangaController({
     required MangaRepository mangaRepository,
-    required Manga selectedManga,
+    required Manga? selectedManga,
     required this.favoriteMangas,
   })  : _mangaRepository = mangaRepository,
         super(
           MangaState(
             isFavorite: favoriteMangas?.contains(selectedManga) ?? false,
-            manga: selectedManga,
           ),
         );
 
-  Future<void> addToFavorite() =>
-      _mangaRepository.addMangaToFavorite(state.manga);
+  Future<void> addToFavorite(Manga manga) =>
+      _mangaRepository.addMangaToFavorite(manga);
 
-  Future<void> removeFromFavorite() =>
-      _mangaRepository.removeMangaFromFavorite(state.manga);
+  Future<void> removeFromFavorite(Manga manga) =>
+      _mangaRepository.removeMangaFromFavorite(manga);
 
   Future<void> updateManga(Manga manga) async {
     state = state.copyWith(isLoading: true);
@@ -42,6 +41,10 @@ class MangaController extends StateNotifier<MangaState> {
       );
     }
   }
+
+  Manga getMangaFromId(String id) =>
+      _mangaRepository.getFavoriteFromId(id) ??
+      _mangaRepository.getMangaFromId(id)!;
 }
 
 final mangaControllerProvider = StateNotifierProvider.autoDispose
@@ -53,7 +56,7 @@ final mangaControllerProvider = StateNotifierProvider.autoDispose
     mangaRepository: repository,
     selectedManga:
         repository.getFavorites().firstWhereOrNull((e) => e.id == id) ??
-            repository.getFetchedMangas().firstWhere((e) => e.id == id),
+            repository.getFetchedMangas().firstWhereOrNull((e) => e.id == id),
     favoriteMangas: favoriteMangas,
   );
 });

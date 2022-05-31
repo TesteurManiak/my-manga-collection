@@ -10,5 +10,6 @@ abstract class MangaRepository {
   Future<List<Manga>> fetchFavorites();
   List<Manga> getFavorites();
   List<Manga> getFetchedMangas();
-  Future<void> dispose();
+  Manga? getFavoriteFromId(String id);
+  Manga? getMangaFromId(String id);
 }

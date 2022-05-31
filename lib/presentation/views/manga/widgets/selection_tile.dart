@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../domain/entities/manga.dart';
 import '../../../controllers/manga/manga_controller.dart';
 
-class SelectionTile extends ConsumerWidget {
+class SelectionTile extends StatelessWidget {
   final int volumeNumber;
   final Manga manga;
+  final MangaController controller;
 
   const SelectionTile({
     Key? key,
     required this.volumeNumber,
     required this.manga,
+    required this.controller,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(mangaControllerProvider(manga.id).notifier);
+  Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(8);
     final isSelected = manga.volumeOwned.contains(volumeNumber);
 
