@@ -28,6 +28,8 @@ class Result<T, E> {
     return value!;
   }
 
+  Object get anyValue => value ?? error!;
+
   @override
   String toString() {
     switch (type) {

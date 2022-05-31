@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -116,15 +117,21 @@ class MangaRepositoryImpl implements MangaRepository {
       _fetchedMangaSubject.value.firstWhereOrNull((e) => e.id == id);
 
   @override
-  Future<void> exportCollection() async {
-    final localMangas = await _localDataSource.getAllMangas();
-    final jsonData = jsonEncode(localMangas.map((e) => e.toJson()).toList());
-    final formattedDate =
-        DateFormat('yyyy-MM-dd-HH-mm-ss').format(DateTime.now());
-    await _fileManager.writeFile(
-      data: jsonData,
-      fileName: 'collection-$formattedDate.json',
-    );
+  Future<Result<String, Object>> exportCollection() async {
+    try {
+      final localMangas = await _localDataSource.getAllMangas();
+      final jsonData = jsonEncode(localMangas.map((e) => e.toJson()).toList());
+      final formattedDate =
+          DateFormat('yyyy-MM-dd-HH-mm-ss').format(DateTime.now());
+      final value = await _fileManager.writeFile(
+        data: jsonData,
+        fileName: 'collection-$formattedDate.json',
+      );
+      return Result.value('Saved to $value');
+    } catch (e) {
+      debugPrint(e.toString());
+      return Result.error(e);
+    }
   }
 }
 

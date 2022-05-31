@@ -53,8 +53,6 @@ class MangaController extends StateNotifier<MangaState> {
   Manga getMangaFromId(String id) =>
       _mangaRepository.getFavoriteFromId(id) ??
       _mangaRepository.getMangaFromId(id)!;
-
-  Future<void> exportCollection() => _mangaRepository.exportCollection();
 }
 
 final mangaControllerProvider =
