@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/extensions/string_extensions.dart';
 import '../../../domain/entities/manga.dart';
 import '../../../router.dart';
 
@@ -26,7 +26,13 @@ class MangaTile extends StatelessWidget {
       title: Text(manga.title),
       subtitle: volumeCount != null && volumeCount > 0
           ? Text(
-              'Owned: ${manga.volumeOwned.length}/$volumeCount'.hardcoded,
+              tr(
+                'mangaView.owned',
+                args: [
+                  manga.volumeOwned.length.toString(),
+                  volumeCount.toString()
+                ],
+              ),
             )
           : null,
       trailing: const Icon(Icons.arrow_forward_ios_rounded),

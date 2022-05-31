@@ -5,7 +5,18 @@
         "searchHint": "Manga name..."
     },
     "collectionView": {
-        "title": "Collection"
+        "title": "Collection",
+        "emptyList": "No manga in your collection."
+    },
+    "editView": {
+        "title": "Edit",
+        "formLabel": {
+            "title": "Title",
+            "volume": "Volume count"
+        }
+    },
+    "errors": {
+        "generic": "An error occurred."
     },
     "homeView": {
         "item1": "Search",
@@ -14,11 +25,15 @@
     },
     "mangaView": {
         "chapters": "{} Volumes",
+        "owned": "Owned: {}/{}",
         "unknown": "Unknown"
     },
     "settingsView": {
         "darkMode": "Dark Mode",
         "title": "Settings",
         "language": "Language"
+    },
+    "validators": {
+        "empty": "This field is required."
     }
 }

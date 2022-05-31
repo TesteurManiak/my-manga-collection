@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/extensions/string_extensions.dart';
 import '../../../data/repositories/manga_repository_impl.dart';
 import '../../../domain/entities/manga.dart';
 import '../common/async_value_widget.dart';
@@ -37,9 +36,7 @@ class _CollectionViewState extends ConsumerState<CollectionView>
             value: value,
             data: (data) {
               if (data.isEmpty) {
-                return Center(
-                  child: Text('No manga in collection'.hardcoded),
-                );
+                return Center(child: Text(tr('collectionView.emptyList')));
               }
               return MangaList(data);
             },

@@ -1,6 +1,6 @@
-import '../extensions/string_extensions.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 abstract class Validators {
   static String? notEmpty(String? value) =>
-      value?.isNotEmpty ?? false ? null : 'This field is required'.hardcoded;
+      value?.isNotEmpty ?? false ? null : tr('validators.empty');
 }

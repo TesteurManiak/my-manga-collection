@@ -1,12 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/extensions/string_extensions.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../../domain/entities/manga.dart';
 import '../../../controllers/manga/manga_controller.dart';
-import 'edition_title.dart';
 import 'number_form_field.dart';
 
 class MangaEditionForm extends ConsumerStatefulWidget {
@@ -39,7 +38,7 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
     ref.watch(mangaControllerProvider(widget.manga.id));
     return Scaffold(
       appBar: AppBar(
-        title: const EditionTitle(),
+        title: Text(tr('editView.title')),
         actions: [
           IconButton(
             onPressed: _validateForm,
@@ -55,14 +54,14 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
             TextFormField(
               initialValue: widget.manga.title,
               decoration: InputDecoration(
-                labelText: 'Title'.hardcoded,
+                labelText: tr('editView.formLabel.title'),
               ),
               validator: Validators.notEmpty,
               onSaved: (val) => _title = val,
             ),
             NumberFormField(
               initialValue: widget.manga.volumeCount,
-              labelText: 'Volume count'.hardcoded,
+              labelText: tr('editView.formLabel.volume'),
               onSaved: (val) => volumeCount = val,
             ),
           ],

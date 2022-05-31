@@ -1,7 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../core/extensions/string_extensions.dart';
 
 class AsyncValueWidget<T> extends StatelessWidget {
   final AsyncValue<T> value;
@@ -22,9 +21,7 @@ class AsyncValueWidget<T> extends StatelessWidget {
       error: error ??
           (e, __) {
             debugPrint(e.toString());
-            return Center(
-              child: Text("An error occured".hardcoded),
-            );
+            return Center(child: Text(tr('errors.generic')));
           },
       loading: () => const Center(
         child: CircularProgressIndicator(),

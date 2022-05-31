@@ -5,7 +5,18 @@
         "searchHint": "Nom du manga..."
     },
     "collectionView": {
-        "title": "Collection"
+        "title": "Collection",
+        "emptyList": "Aucun manga dans cette collection."
+    },
+    "editView": {
+        "title": "Edition",
+        "formLabel": {
+            "title": "Titre",
+            "volume": "Nombre de tomes"
+        }
+    },
+    "errors": {
+        "generic": "Une erreur s'est produite."
     },
     "homeView": {
         "item1": "Chercher",
@@ -14,11 +25,15 @@
     },
     "mangaView": {
         "chapters": "{} Tomes",
+        "owned": "Possédé: {}/{}",
         "unknown": "Inconnu"
     },
     "settingsView": {
         "darkMode": "Mode Sombre",
         "title": "Paramètres",
         "language": "Langue"
+    },
+    "validators": {
+        "empty": "Ce champs est requis."
     }
 }

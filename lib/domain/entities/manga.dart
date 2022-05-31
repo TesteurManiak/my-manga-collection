@@ -84,7 +84,7 @@ class Manga extends Equatable {
         'posterImage': posterImage.toJson(),
         if (coverImage != null) 'coverImage': coverImage?.toJson(),
       },
-      'volumeOwned': volumeOwned,
+      if (volumeOwned.isNotEmpty) 'volumeOwned': volumeOwned,
     };
   }
 

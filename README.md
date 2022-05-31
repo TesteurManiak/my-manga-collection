@@ -11,7 +11,9 @@ You can browse manga throught those available on Kistu API and save them thanks 
 
 ## TODO
 
-* Check for manga updates
+* Improve theming
+* Export collection to JSON
+* Import JSON collection
 * Edit more manga information (synopsys, cover image, poster image)
 * Add a manga locally if not found by the api
 

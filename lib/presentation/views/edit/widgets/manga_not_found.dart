@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/string_extensions.dart';
-import 'edition_title.dart';
 
 class MangaNotFound extends StatelessWidget {
   final String id;
@@ -11,7 +11,7 @@ class MangaNotFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const EditionTitle()),
+      appBar: AppBar(title: Text(tr('editView.title'))),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16),
