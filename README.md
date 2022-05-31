@@ -5,6 +5,8 @@
 
 ---
 
+[![Test workflow](https://github.com/TesteurManiak/my-manga-collection/actions/workflows/tests.yml/badge.svg)](https://github.com/TesteurManiak/my-manga-collection/actions/workflows/tests.yml)
+
 Follow and track your manga collection easily with a simple Flutter application using [Kitsu API](https://kitsu.docs.apiary.io/#).
 
 You can browse manga throught those available on Kistu API and save them thanks to a SQLite database to keep track of them.
