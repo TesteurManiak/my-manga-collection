@@ -17,7 +17,7 @@ You can browse manga throught those available on Kistu API and save them thanks 
 * :speech_balloon: English & French Language
 * :mag: Browse manga by titles throught Kitsu API
 * :book: Save manga to your collection
-* :pencil: You can edit titles and the number of chapters of your manga
+* :pencil: Edit titles and the number of chapters of your mangas
 * :computer: Works on Android, iOS, Web, Windows, Linux, MacOS
 * :open_file_folder: Export your collection to a JSON file (Android only for now)
 
