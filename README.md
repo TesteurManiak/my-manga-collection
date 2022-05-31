@@ -19,6 +19,7 @@ You can browse manga throught those available on Kistu API and save them thanks 
 * :book: Save manga to your collection
 * :pencil: You can edit titles and the number of chapters of your manga
 * :computer: Works on Android, iOS, Web, Windows, Linux, MacOS
+* :open_file_folder: Export your collection to a JSON file (Android only for now)
 
 ## Screenshots
 
@@ -42,7 +43,6 @@ You can browse manga throught those available on Kistu API and save them thanks 
 
 ## TODO
 
-* Export collection to JSON
 * Import JSON collection
 * Edit more manga information (synopsys, cover image, poster image)
 * Add a manga locally if not found by the api
