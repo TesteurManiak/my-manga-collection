@@ -12,18 +12,18 @@ You can browse manga throught those available on Kistu API and save them thanks 
 ## Features
 
 * :flashlight: Light & Dark Theme
-* :us: English & French :fr: Language
+* :speech_balloon: English & French Language
 * :mag: Browse manga by titles throught Kitsu API
 * :book: Save manga to your collection
 * :pencil: You can edit titles and the number of chapters of your manga
 
 ## Screenshots
 
-### Light :sunny:
+### :sunny: Light
 
 _Section in construction_
 
-### Dark :crescent_moon:
+### :crescent_moon: Dark
 
 <p float="left">
     <img src="screenshots/dark/search.png" height="400"/>
@@ -42,11 +42,11 @@ _Section in construction_
 
 ## Install
 
-### Android
+### :phone: Android
 
 _Section in construction_
 
-### iOS
+### :iphone: iOS
 
 You need to build the application with flutter using:
 ```
@@ -55,11 +55,11 @@ flutter build ios
 
 You need to have a MacOS machine with Xcode and Flutter installed.
 
-## How to Use
+## :question: How to Use
 
 Simply browse the manga available on the API and add them to your collection. You will be able to keep track of the volume in your collection easily.
 
-## Dependencies
+## :package: Dependencies
 
 * [cached_network_image](https://pub.dev/packages/cached_network_image)
 * [collection](https://pub.dev/packages/collection)
