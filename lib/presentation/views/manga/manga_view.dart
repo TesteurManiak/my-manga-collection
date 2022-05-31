@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../router.dart';
 import '../../controllers/manga/manga_controller.dart';
-import 'widgets/chapters_selection.dart';
 import 'widgets/manga_content.dart';
 import 'widgets/manga_header.dart';
+import 'widgets/selection_tile.dart';
 
 class MangaView extends ConsumerWidget {
   final String id;
@@ -57,16 +57,19 @@ class MangaView extends ConsumerWidget {
             ),
           ),
           if (isFavorite && volumeCount != null)
-            SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 8,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => SelectionTile(
-                  volumeNumber: index + 1,
-                  manga: currentManga,
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+              sliver: SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 8,
                 ),
-                childCount: volumeCount,
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) => SelectionTile(
+                    volumeNumber: index + 1,
+                    manga: currentManga,
+                  ),
+                  childCount: volumeCount,
+                ),
               ),
             ),
         ],

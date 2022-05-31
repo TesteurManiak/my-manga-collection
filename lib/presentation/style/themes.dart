@@ -22,6 +22,9 @@ abstract class AppTheme {
       appBarTheme: _baseLight.appBarTheme.copyWith(
         backgroundColor: themeColors.primary,
       ),
+      chipTheme: _baseLight.chipTheme.copyWith(
+        selectedColor: themeColors.chipSelection,
+      ),
     );
   }
 
@@ -33,7 +36,7 @@ abstract class AppTheme {
       cardColor: themeColors.background,
       backgroundColor: themeColors.background,
       chipTheme: _baseDark.chipTheme.copyWith(
-        secondarySelectedColor: themeColors.chipSelection,
+        selectedColor: themeColors.chipSelection,
       ),
       extensions: {themeColors, const AppTextStyles()},
       appBarTheme: _baseDark.appBarTheme.copyWith(

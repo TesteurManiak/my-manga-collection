@@ -18,6 +18,7 @@ class AppColors extends ThemeExtension<AppColors> {
           primary: const Color(0xFF2196F3),
           background: const Color(0xFFF5F5F5),
           fixedBottomNavigationBar: Colors.blue,
+          chipSelection: const Color(0xFF2196F3),
         );
 
   const AppColors.dark()

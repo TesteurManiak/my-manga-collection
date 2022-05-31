@@ -16,9 +16,13 @@ class SelectionTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final borderRadius = BorderRadius.circular(8);
     final controller = ref.watch(mangaControllerProvider(manga.id).notifier);
+    final borderRadius = BorderRadius.circular(8);
     final isSelected = manga.volumeOwned.contains(volumeNumber);
+
+    final chipTheme = ChipTheme.of(context);
+    final textTheme = Theme.of(context).textTheme;
+
     return Padding(
       padding: const EdgeInsets.all(4),
       child: InkWell(
@@ -45,8 +49,10 @@ class SelectionTile extends ConsumerWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: borderRadius,
-            border: Border.all(),
-            color: isSelected ? Colors.yellow : Colors.transparent,
+            border: Border.all(color: textTheme.button?.color ?? Colors.black),
+            color: isSelected
+                ? chipTheme.selectedColor
+                : chipTheme.backgroundColor,
           ),
           child: Text('$volumeNumber'),
         ),
