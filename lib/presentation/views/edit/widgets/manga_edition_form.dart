@@ -50,6 +50,7 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
       body: Form(
         key: _formKey,
         child: ListView(
+          padding: const EdgeInsets.all(16),
           children: [
             TextFormField(
               initialValue: widget.manga.title,

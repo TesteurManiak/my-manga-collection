@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import 'package:like_button/like_button.dart';
 
-import '../../../router.dart';
 import '../../controllers/manga/manga_controller.dart';
+import 'widgets/edit_button.dart';
 import 'widgets/manga_content.dart';
 import 'widgets/manga_header.dart';
 import 'widgets/selection_tile.dart';
@@ -15,12 +15,14 @@ class MangaView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pageState = ref.watch(mangaControllerProvider(id));
+    ref.watch(mangaControllerProvider(id));
     final controller = ref.read(mangaControllerProvider(id).notifier);
 
-    final isFavorite = pageState.isFavorite;
     final currentManga = controller.getMangaFromId(id);
+    final isFavorite = controller.isMangaFavorite(currentManga);
     final volumeCount = currentManga.volumeCount;
+
+    final iconSize = AppBarTheme.of(context).actionsIconTheme?.size ?? 28.0;
 
     return Scaffold(
       body: CustomScrollView(
@@ -28,23 +30,11 @@ class MangaView extends ConsumerWidget {
           SliverAppBar(
             floating: true,
             actions: [
-              if (isFavorite)
-                IconButton(
-                  onPressed: () => context.pushNamed(
-                    AppRoute.edit.name,
-                    params: {'id': id},
-                  ),
-                  icon: const Icon(Icons.edit),
-                ),
-              IconButton(
-                icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-                onPressed: () {
-                  if (isFavorite) {
-                    controller.removeFromFavorite(currentManga);
-                  } else {
-                    controller.addToFavorite(currentManga);
-                  }
-                },
+              EditButton(isFavorite: isFavorite, id: id),
+              LikeButton(
+                size: iconSize,
+                isLiked: isFavorite,
+                onTap: (_) => controller.toggleFavorite(currentManga),
               ),
             ],
           ),

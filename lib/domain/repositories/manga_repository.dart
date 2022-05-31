@@ -8,8 +8,6 @@ abstract class MangaRepository {
   Future<Result<void, Object>> editManga(Manga newManga);
   Stream<List<Manga>> watchFavorites();
   Future<List<Manga>> fetchFavorites();
-  List<Manga> getFavorites();
-  List<Manga> getFetchedMangas();
   Manga? getFavoriteFromId(String id);
   Manga? getMangaFromId(String id);
 }

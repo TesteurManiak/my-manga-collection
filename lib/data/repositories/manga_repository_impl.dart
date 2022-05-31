@@ -102,18 +102,12 @@ class MangaRepositoryImpl implements MangaRepository {
   }
 
   @override
-  List<Manga> getFavorites() => _favoriteMangaSubject.value;
-
-  @override
-  List<Manga> getFetchedMangas() => _fetchedMangaSubject.value;
-
-  @override
   Manga? getFavoriteFromId(String id) =>
-      getFavorites().firstWhereOrNull((e) => e.id == id);
+      _favoriteMangaSubject.value.firstWhereOrNull((e) => e.id == id);
 
   @override
   Manga? getMangaFromId(String id) =>
-      getFetchedMangas().firstWhereOrNull((e) => e.id == id);
+      _fetchedMangaSubject.value.firstWhereOrNull((e) => e.id == id);
 }
 
 final mangaRepositoryProvider = Provider<MangaRepository>((ref) {

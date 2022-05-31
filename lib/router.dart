@@ -20,7 +20,7 @@ GoRouter routerGenerator({String? initialLocation}) {
           GoRoute(
             name: AppRoute.manga.name,
             path: AppRoute.manga.path,
-            builder: (_, state) => MangaView(id: state.extra as String),
+            builder: (_, state) => MangaView(id: state.params['id']!),
             routes: [
               GoRoute(
                 name: AppRoute.edit.name,
@@ -38,8 +38,8 @@ GoRouter routerGenerator({String? initialLocation}) {
 enum AppRoute {
   root('/'),
   home('/home'),
-  manga('manga'),
-  edit('edit/:id');
+  manga('manga/:id'),
+  edit('edit');
 
   final String path;
 
