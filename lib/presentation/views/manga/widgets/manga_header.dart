@@ -12,6 +12,7 @@ class MangaHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
+      margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.all(8),
       alignment: Alignment.center,
       decoration: BoxDecoration(
