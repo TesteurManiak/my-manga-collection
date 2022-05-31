@@ -9,21 +9,21 @@ Follow and track your manga collection easily with a simple Flutter application 
 
 You can browse manga throught those available on Kistu API and save them thanks to a SQLite database to keep track of them.
 
-## TODO
+## Features
 
-* Improve theming
-* Export collection to JSON
-* Import JSON collection
-* Edit more manga information (synopsys, cover image, poster image)
-* Add a manga locally if not found by the api
+* :flashlight: Light & Dark Theme
+* :us: English & French :fr: Language
+* :mag: Browse manga by titles throught Kitsu API
+* :book: Save manga to your collection
+* :pencil: You can edit titles and the number of chapters of your manga
 
 ## Screenshots
 
+### Light :sunny:
+
 _Section in construction_
 
-### Light
-
-### Dark
+### Dark :crescent_moon:
 
 <p float="left">
     <img src="screenshots/dark/search.png" height="400"/>
@@ -31,6 +31,14 @@ _Section in construction_
     <img src="screenshots/dark/manga.png" height="400"/>
     <img src="screenshots/dark/settings.png" height="400"/>
 </p>
+
+## TODO
+
+* Improve theming
+* Export collection to JSON
+* Import JSON collection
+* Edit more manga information (synopsys, cover image, poster image)
+* Add a manga locally if not found by the api
 
 ## Install
 
