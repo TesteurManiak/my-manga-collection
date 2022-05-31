@@ -16,6 +16,7 @@ You can browse manga throught those available on Kistu API and save them thanks 
 * :mag: Browse manga by titles throught Kitsu API
 * :book: Save manga to your collection
 * :pencil: You can edit titles and the number of chapters of your manga
+* :computer: Works on Android, iOS, Web, Windows, Linux, MacOS
 
 ## Screenshots
 
