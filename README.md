@@ -34,11 +34,11 @@ _Section in construction_
 
 ## TODO
 
-* Improve theming
 * Export collection to JSON
 * Import JSON collection
 * Edit more manga information (synopsys, cover image, poster image)
 * Add a manga locally if not found by the api
+* Improve theming & animations
 
 ## Install
 

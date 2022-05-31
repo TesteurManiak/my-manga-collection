@@ -26,7 +26,8 @@
     "mangaView": {
         "chapters": "{} Volumes",
         "owned": "Owned: {}/{}",
-        "unknown": "Unknown"
+        "unknown": "Unknown",
+        "notFound": "Manga not found."
     },
     "settingsView": {
         "darkMode": "Dark Mode",

@@ -17,10 +17,10 @@ class EditView extends ConsumerWidget {
     final value = ref.watch(favoriteChangeProvider);
     return AsyncValueWidget<List<Manga>>(
       value: value,
-      error: (_, __) => MangaNotFound(id: id),
+      error: (_, __) => const MangaNotFound(),
       data: (data) {
         final manga = data.firstWhereOrNull((e) => e.id == id);
-        if (manga == null) return MangaNotFound(id: id);
+        if (manga == null) return const MangaNotFound();
         return MangaEditionForm(manga: manga);
       },
     );
