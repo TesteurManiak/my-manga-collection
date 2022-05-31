@@ -13,7 +13,7 @@
         "item3": "Paramètres"
     },
     "mangaView": {
-        "chapters": "{} Chapitres - {} Tomes",
+        "chapters": "{} Tomes",
         "unknown": "Inconnu"
     },
     "settingsView": {

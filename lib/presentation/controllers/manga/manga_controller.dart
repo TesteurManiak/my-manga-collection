@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -50,7 +51,9 @@ final mangaControllerProvider = StateNotifierProvider.autoDispose
 
   return MangaController(
     mangaRepository: repository,
-    selectedManga: repository.getFavorites().firstWhere((e) => e.id == id),
+    selectedManga:
+        repository.getFavorites().firstWhereOrNull((e) => e.id == id) ??
+            repository.getFetchedMangas().firstWhere((e) => e.id == id),
     favoriteMangas: favoriteMangas,
   );
 });

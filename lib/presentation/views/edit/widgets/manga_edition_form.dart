@@ -60,11 +60,6 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
               onSaved: (val) => _title = val,
             ),
             NumberFormField(
-              initialValue: widget.manga.chapterCount,
-              labelText: 'Chapter count'.hardcoded,
-              onSaved: (val) => _chapterCount = val,
-            ),
-            NumberFormField(
               initialValue: widget.manga.volumeCount,
               labelText: 'Volume count'.hardcoded,
               onSaved: (val) => volumeCount = val,

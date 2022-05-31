@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../router.dart';
 import '../../controllers/manga/manga_controller.dart';
 import '../../style/text_styles.dart';
+import 'widgets/chapters_selection.dart';
 import 'widgets/manga_header.dart';
 
 class MangaView extends ConsumerWidget {
@@ -20,6 +21,7 @@ class MangaView extends ConsumerWidget {
 
     final isFavorite = pageState.isFavorite;
     final currentManga = pageState.manga;
+    final volumeCount = currentManga.volumeCount;
 
     final appTextStyles = Theme.of(context).extension<AppTextStyles>();
     return Scaffold(
@@ -65,14 +67,13 @@ class MangaView extends ConsumerWidget {
             tr(
               'mangaView.chapters',
               args: [
-                currentManga.chapterCount?.toString() ??
-                    tr('mangaView.unknown'),
-                currentManga.volumeCount?.toString() ?? tr('mangaView.unknown'),
+                volumeCount?.toString() ?? tr('mangaView.unknown'),
               ],
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 15),
+          if (isFavorite && volumeCount != null)
+            ChaptersSelection(manga: currentManga, volumeCount: volumeCount)
         ],
       ),
     );

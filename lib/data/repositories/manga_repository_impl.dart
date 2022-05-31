@@ -27,6 +27,7 @@ class MangaRepositoryImpl implements MangaRepository {
   }
 
   final _favoriteMangaSubject = BehaviorSubject<List<Manga>>();
+  final _fetchedMangaSubject = BehaviorSubject<List<Manga>>();
 
   @override
   Future<Result<List<Manga>, Object>> searchMangas(String title) async {
@@ -45,6 +46,7 @@ class MangaRepositoryImpl implements MangaRepository {
           mangas.putIfAbsent(manga.id, () => manga);
         }
       }
+      _fetchedMangaSubject.add(mangas.values.toList());
       return Result.value(mangas.values.toList());
     } catch (e) {
       return Result.error(e);
@@ -95,8 +97,12 @@ class MangaRepositoryImpl implements MangaRepository {
   List<Manga> getFavorites() => _favoriteMangaSubject.value;
 
   @override
+  List<Manga> getFetchedMangas() => _fetchedMangaSubject.value;
+
+  @override
   Future<void> dispose() async {
     await _favoriteMangaSubject.close();
+    await _fetchedMangaSubject.close();
   }
 }
 
@@ -114,8 +120,5 @@ final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
 
 final favoriteChangeProvider = StreamProvider.autoDispose<List<Manga>>((ref) {
   final repository = ref.watch(mangaRepositoryProvider);
-
-  ref.onDispose(repository.dispose);
-
   return repository.watchFavorites();
 });

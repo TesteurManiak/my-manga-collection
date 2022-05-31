@@ -9,5 +9,6 @@ abstract class MangaRepository {
   Stream<List<Manga>> watchFavorites();
   Future<List<Manga>> fetchFavorites();
   List<Manga> getFavorites();
+  List<Manga> getFetchedMangas();
   Future<void> dispose();
 }

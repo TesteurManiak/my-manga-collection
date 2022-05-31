@@ -11,7 +11,6 @@ void main() {
     group('fromJson', () {
       const tNaruto = MangaKitsuModel(
         id: '35',
-        link: 'https://kitsu.io/api/edge/manga/35',
         synopsis:
             "Before Naruto's birth, a great demon fox had attacked the Hidden Leaf Village. A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers. Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village. Desiring the respect he never received, Naruto works towards his dream with fellow friends Sasuke and Sakura and mentor Kakashi as they go through many trials and battles that come with being a ninja.",
         title: 'Naruto',
@@ -31,7 +30,6 @@ void main() {
               'https://media.kitsu.io/manga/cover_images/35/original.jpg',
           mediumUrl: null,
         ),
-        chapterCount: 700,
         volumeCount: 72,
         volumeOwned: [],
       );

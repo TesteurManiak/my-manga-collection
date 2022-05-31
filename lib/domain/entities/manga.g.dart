@@ -18,38 +18,32 @@ class MangaAdapter extends TypeAdapter<Manga> {
     };
     return Manga(
       id: fields[0] as String,
-      link: fields[1] as String,
-      synopsis: fields[2] as String,
-      title: fields[3] as String,
-      posterImage: fields[4] as MangaImages,
-      coverImage: fields[5] as MangaImages?,
-      chapterCount: fields[6] as int?,
-      volumeCount: fields[7] as int?,
-      volumeOwned: (fields[8] as List).cast<int>(),
+      synopsis: fields[1] as String,
+      title: fields[2] as String,
+      posterImage: fields[3] as MangaImages,
+      coverImage: fields[4] as MangaImages?,
+      volumeCount: fields[5] as int?,
+      volumeOwned: (fields[6] as List).cast<int>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Manga obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.link)
-      ..writeByte(2)
       ..write(obj.synopsis)
-      ..writeByte(3)
+      ..writeByte(2)
       ..write(obj.title)
-      ..writeByte(4)
+      ..writeByte(3)
       ..write(obj.posterImage)
-      ..writeByte(5)
+      ..writeByte(4)
       ..write(obj.coverImage)
-      ..writeByte(6)
-      ..write(obj.chapterCount)
-      ..writeByte(7)
+      ..writeByte(5)
       ..write(obj.volumeCount)
-      ..writeByte(8)
+      ..writeByte(6)
       ..write(obj.volumeOwned);
   }
 

@@ -13,37 +13,29 @@ class Manga extends Equatable {
   final String id;
 
   @HiveField(1)
-  final String link;
-
-  @HiveField(2)
   final String synopsis;
 
-  @HiveField(3)
+  @HiveField(2)
   final String title;
 
-  @HiveField(4)
+  @HiveField(3)
   final MangaImages posterImage;
 
-  @HiveField(5)
+  @HiveField(4)
   final MangaImages? coverImage;
 
-  @HiveField(6)
-  final int? chapterCount;
-
-  @HiveField(7)
+  @HiveField(5)
   final int? volumeCount;
 
-  @HiveField(8)
+  @HiveField(6)
   final List<int> volumeOwned;
 
   const Manga({
     required this.id,
-    required this.link,
     required this.synopsis,
     required this.title,
     required this.posterImage,
     required this.coverImage,
-    required this.chapterCount,
     required this.volumeCount,
     required this.volumeOwned,
   });
@@ -51,12 +43,10 @@ class Manga extends Equatable {
   @override
   List<Object?> get props => [
         id,
-        link,
         synopsis,
         title,
         posterImage,
         coverImage,
-        chapterCount,
         volumeCount,
         volumeOwned,
       ];
@@ -75,12 +65,10 @@ class Manga extends Equatable {
   }) {
     return Manga(
       id: id ?? this.id,
-      link: link ?? this.link,
       synopsis: synopsis ?? this.synopsis,
       title: title ?? this.title,
       posterImage: posterImage ?? this.posterImage,
       coverImage: coverImage ?? this.coverImage,
-      chapterCount: chapterCount ?? this.chapterCount,
       volumeCount: volumeCount ?? this.volumeCount,
       volumeOwned: volumeOwned ?? this.volumeOwned,
     );
@@ -89,11 +77,9 @@ class Manga extends Equatable {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
-      'links': {'self': link},
       'attributes': {
         'synopsis': synopsis,
         'canonicalTitle': title,
-        if (chapterCount != null) 'chapterCount': chapterCount,
         if (volumeCount != null) 'volumeCount': volumeCount,
         'posterImage': posterImage.toJson(),
         if (coverImage != null) 'coverImage': coverImage?.toJson(),
