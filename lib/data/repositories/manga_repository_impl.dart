@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rxdart/rxdart.dart';
 
+import '../../core/platform/file_manager/file_manager.dart';
 import '../../core/platform/network_info.dart';
 import '../../domain/entities/manga.dart';
 import '../../domain/entities/result.dart';
@@ -15,14 +18,17 @@ class MangaRepositoryImpl implements MangaRepository {
   final NetworkInfo _networkInfo;
   final RemoteDataSource _remoteDataSource;
   final LocalDataSource _localDataSource;
+  final FileManager _fileManager;
 
   MangaRepositoryImpl({
     required NetworkInfo networkInfo,
     required RemoteDataSource remoteDataSource,
     required LocalDataSource localDataSource,
+    required FileManager fileManager,
   })  : _networkInfo = networkInfo,
         _remoteDataSource = remoteDataSource,
-        _localDataSource = localDataSource {
+        _localDataSource = localDataSource,
+        _fileManager = fileManager {
     _localDataSource.watchMangas().listen(_favoriteMangaSubject.add);
     unawaited(fetchFavorites());
   }
@@ -108,17 +114,31 @@ class MangaRepositoryImpl implements MangaRepository {
   @override
   Manga? getMangaFromId(String id) =>
       _fetchedMangaSubject.value.firstWhereOrNull((e) => e.id == id);
+
+  @override
+  Future<void> exportCollection() async {
+    final localMangas = await _localDataSource.getAllMangas();
+    final jsonData = jsonEncode(localMangas.map((e) => e.toJson()).toList());
+    final formattedDate =
+        DateFormat('yyyy-MM-dd-HH-mm-ss').format(DateTime.now());
+    await _fileManager.writeFile(
+      data: jsonData,
+      fileName: 'collection-$formattedDate.json',
+    );
+  }
 }
 
 final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
   final networkInfo = ref.watch(networkInfoProvider);
   final remoteDataSource = ref.watch(remoteDataSourceProvider);
   final localDataSource = ref.watch(localDataSourceProvider);
+  final fileManager = ref.watch(fileManagerProvider);
 
   return MangaRepositoryImpl(
     networkInfo: networkInfo,
     remoteDataSource: remoteDataSource,
     localDataSource: localDataSource,
+    fileManager: fileManager,
   );
 });
 

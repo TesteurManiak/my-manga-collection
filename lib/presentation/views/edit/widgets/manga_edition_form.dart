@@ -30,12 +30,12 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
   @override
   void initState() {
     super.initState();
-    _controller = ref.read(mangaControllerProvider(widget.manga.id).notifier);
+    _controller = ref.read(mangaControllerProvider.notifier);
   }
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(mangaControllerProvider(widget.manga.id));
+    ref.watch(mangaControllerProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(tr('editView.title')),

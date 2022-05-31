@@ -15,8 +15,8 @@ class MangaView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(mangaControllerProvider(id));
-    final controller = ref.read(mangaControllerProvider(id).notifier);
+    ref.watch(mangaControllerProvider);
+    final controller = ref.read(mangaControllerProvider.notifier);
 
     final currentManga = controller.getMangaFromId(id);
     final isFavorite = controller.isMangaFavorite(currentManga);

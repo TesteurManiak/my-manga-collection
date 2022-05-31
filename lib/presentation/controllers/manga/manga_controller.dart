@@ -53,10 +53,12 @@ class MangaController extends StateNotifier<MangaState> {
   Manga getMangaFromId(String id) =>
       _mangaRepository.getFavoriteFromId(id) ??
       _mangaRepository.getMangaFromId(id)!;
+
+  Future<void> exportCollection() => _mangaRepository.exportCollection();
 }
 
-final mangaControllerProvider = StateNotifierProvider.autoDispose
-    .family<MangaController, MangaState, String>((ref, id) {
+final mangaControllerProvider =
+    StateNotifierProvider.autoDispose<MangaController, MangaState>((ref) {
   final repository = ref.watch(mangaRepositoryProvider);
   final favoriteMangas = ref.watch(favoriteChangeProvider).value;
 
