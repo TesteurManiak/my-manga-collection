@@ -22,12 +22,6 @@ class _CollectionViewState extends ConsumerState<CollectionView>
     return Scaffold(
       appBar: AppBar(
         title: Text(tr('collectionView.title')),
-        actions: [
-          IconButton(
-            onPressed: _searchPressed,
-            icon: const Icon(Icons.search),
-          ),
-        ],
       ),
       body: Consumer(
         builder: (context, ref, _) {
@@ -45,8 +39,6 @@ class _CollectionViewState extends ConsumerState<CollectionView>
       ),
     );
   }
-
-  void _searchPressed() {}
 
   @override
   bool get wantKeepAlive => true;
