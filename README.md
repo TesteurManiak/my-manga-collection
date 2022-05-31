@@ -21,7 +21,12 @@ You can browse manga throught those available on Kistu API and save them thanks 
 
 ### :sunny: Light
 
-_Section in construction_
+<p float="left">
+    <img src="screenshots/light/search.png" height="400"/>
+    <img src="screenshots/light/collection.png" height="400"/>
+    <img src="screenshots/light/manga.png" height="400"/>
+    <img src="screenshots/light/settings.png" height="400"/>
+</p>
 
 ### :crescent_moon: Dark
 
