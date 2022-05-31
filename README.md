@@ -23,10 +23,12 @@ _Section in construction_
 
 ### Dark
 
-<img src="screenshots/dark/search.png" height="400"/>
-<img src="screenshots/dark/collection.png" height="400"/>
-<img src="screenshots/dark/manga.png" height="400"/>
-<img src="screenshots/dark/settings.png" height="400"/>
+<p float="left">
+    <img src="screenshots/dark/search.png" height="400"/>
+    <img src="screenshots/dark/collection.png" height="400"/>
+    <img src="screenshots/dark/manga.png" height="400"/>
+    <img src="screenshots/dark/settings.png" height="400"/>
+</p>
 
 ## Install
 
