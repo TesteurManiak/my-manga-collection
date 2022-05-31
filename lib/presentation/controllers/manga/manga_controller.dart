@@ -48,8 +48,6 @@ final mangaControllerProvider = StateNotifierProvider.autoDispose
   final repository = ref.watch(mangaRepositoryProvider);
   final favoriteMangas = ref.watch(favoriteChangeProvider).value;
 
-  ref.onDispose(repository.dispose);
-
   return MangaController(
     mangaRepository: repository,
     selectedManga: repository.getFavorites().firstWhere((e) => e.id == id),
