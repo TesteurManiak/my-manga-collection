@@ -7,6 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 part 'file_manager_android.dart';
 part 'file_manager_exceptions.dart';
+part 'file_manager_ios.dart';
 part 'file_manager_platform_interface.dart';
 
 class FileManager {
@@ -27,6 +28,8 @@ class FileManager {
           FileManagerPlatform.instance is FileManagerPlatformException) {
         if (io.Platform.isAndroid) {
           FileManagerPlatform.instance = FileManagerAndroid();
+        } else if (io.Platform.isIOS) {
+          FileManagerPlatform.instance = FileManagerIOS();
         }
       }
       _manualRegistrationNeeded = false;
