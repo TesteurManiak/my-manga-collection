@@ -1,25 +1,27 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../router.dart';
 import '../../style/colors.dart';
 import '../browse/browse_view.dart';
 import '../collection/collection_view.dart';
 import '../settings/settings_view.dart';
 
-const _kInitialPage = 1;
-
 class HomeView extends ConsumerStatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  final int index;
+
+  const HomeView({Key? key, required this.index}) : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _HomeViewState();
 }
 
 class _HomeViewState extends ConsumerState<HomeView> {
-  final _pageController = PageController(initialPage: _kInitialPage);
+  late final _pageController = PageController(initialPage: widget.index);
 
-  int _currentPage = _kInitialPage;
+  late int _currentPage = widget.index;
 
   @override
   void initState() {
@@ -36,13 +38,21 @@ class _HomeViewState extends ConsumerState<HomeView> {
   }
 
   @override
+  void didUpdateWidget(covariant HomeView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _pageController.jumpToPage(widget.index);
+  }
+
+  @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<AppColors>();
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentPage,
         fixedColor: colors?.fixedBottomNavigationBar,
-        onTap: _pageController.jumpToPage,
+        // onTap: _pageController.jumpToPage,
+        onTap: (index) => context
+            .goNamed(AppRoute.home.name, params: {'index': index.toString()}),
         items: [
           BottomNavigationBarItem(
             icon: const Icon(Icons.add),

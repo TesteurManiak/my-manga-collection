@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/extensions/go_router_extensions.dart';
 import '../../../../router.dart';
 
 class EditButton extends StatelessWidget {
@@ -15,6 +16,8 @@ class EditButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final location = GoRouter.of(context).locationUri;
+    final index = location.pathSegments[1];
     return AnimatedOpacity(
       opacity: isFavorite ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 200),
@@ -22,7 +25,7 @@ class EditButton extends StatelessWidget {
         onPressed: isFavorite
             ? () => context.pushNamed(
                   AppRoute.edit.name,
-                  params: {'id': id},
+                  params: {'id': id, 'index': index},
                 )
             : null,
         icon: const Icon(Icons.edit),
