@@ -58,7 +58,7 @@ class _BrowseViewState extends ConsumerState<BrowseView>
               ? Center(child: Text(tr('browseView.error')))
               : pageState.mangas.isEmpty
                   ? Center(child: Text(tr('browseView.emptyList')))
-                  : MangaList(pageState.mangas),
+                  : MangaList(pageState.mangas, index: 0),
     );
   }
 

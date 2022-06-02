@@ -32,7 +32,7 @@ class _CollectionViewState extends ConsumerState<CollectionView>
               if (data.isEmpty) {
                 return Center(child: Text(tr('collectionView.emptyList')));
               }
-              return MangaList(data);
+              return MangaList(data, index: 1);
             },
           );
         },

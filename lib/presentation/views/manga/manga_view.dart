@@ -10,8 +10,10 @@ import 'widgets/selection_tile.dart';
 
 class MangaView extends ConsumerWidget {
   final String id;
+  final int index;
 
-  const MangaView({Key? key, required this.id}) : super(key: key);
+  const MangaView({Key? key, required this.id, required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,7 +32,7 @@ class MangaView extends ConsumerWidget {
           SliverAppBar(
             floating: true,
             actions: [
-              EditButton(isFavorite: isFavorite, id: id),
+              EditButton(isFavorite: isFavorite, id: id, index: index),
               LikeButton(
                 size: iconSize,
                 isLiked: isFavorite,

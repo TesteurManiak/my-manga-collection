@@ -3,22 +3,26 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/extensions/go_router_extensions.dart';
 import '../../../domain/entities/manga.dart';
 import '../../../router.dart';
 
 class MangaTile extends StatelessWidget {
   final Manga manga;
 
-  const MangaTile({Key? key, required this.manga}) : super(key: key);
+  /// Index of the current page on the `HomeView`.
+  ///
+  /// This is needed for go_router navigation.
+  final int index;
+
+  const MangaTile({
+    Key? key,
+    required this.manga,
+    required this.index,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final volumeCount = manga.volumeCount;
-    final location = GoRouter.of(context).locationUri;
-
-    debugPrint("LOCATION: $location");
-
     return ListTile(
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(2),
@@ -44,7 +48,7 @@ class MangaTile extends StatelessWidget {
       onTap: () => context.pushNamed(
         AppRoute.manga.name,
         params: {
-          'index': location.pathSegments[1],
+          'index': index.toString(),
           'id': manga.id,
         },
       ),

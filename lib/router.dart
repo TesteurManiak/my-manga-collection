@@ -29,6 +29,7 @@ GoRouter routerGenerator({String? initialLocation}) {
             path: AppRoute.manga.path,
             builder: (_, state) => MangaView(
               id: state.params['id']!,
+              index: int.parse(state.params['index']!),
             ),
             routes: [
               GoRoute(
