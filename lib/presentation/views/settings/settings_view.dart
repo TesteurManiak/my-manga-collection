@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/export_button.dart';
+import 'widgets/import_button.dart';
 import 'widgets/locale_dropdown.dart';
 import 'widgets/theme_switcher.dart';
 
@@ -20,6 +21,7 @@ class SettingsView extends StatelessWidget {
           ThemeSwitcher(),
           LocaleDropdown(),
           ExportButton(),
+          ImportButton(),
         ],
       ),
     );

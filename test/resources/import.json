@@ -1,0 +1,71 @@
+[
+    {
+        "id": "13375",
+        "attributes": {
+            "synopsis": "The adopted son of Pegasus J. Crawford, Yakou Tenma, decides to avenge his senpai's defeat at the hands of Yugi Mutou.",
+            "canonicalTitle": "YuGiOh R",
+            "volumeCount": 5,
+            "posterImage": {
+                "tiny": "https://media.kitsu.io/manga/poster_images/13375/tiny.jpg",
+                "small": "https://media.kitsu.io/manga/poster_images/13375/small.jpg",
+                "medium": "https://media.kitsu.io/manga/poster_images/13375/medium.jpg",
+                "large": "https://media.kitsu.io/manga/poster_images/13375/large.jpg",
+                "original": "https://media.kitsu.io/manga/poster_images/13375/original.jpg"
+            }
+        },
+        "volumeOwned": [
+            1,
+            2,
+            4,
+            5
+        ]
+    },
+    {
+        "id": "140",
+        "attributes": {
+            "synopsis": "10th grader Yugi spent most of his time alone playing games--until he solved the Millennium Puzzle, a mysterious Egyptian artifact! Possessed by the puzzle, Yugi becomes Yu-Gi-Oh, the King of Games, and challenges evil-doers to the Shadow Games--weird games with high stakes and high risks! These graphic novels contain new stories not seen in the anime, including the origin of Yugi and his friends!\n(Source: Viz)",
+            "canonicalTitle": "YuGiOh",
+            "volumeCount": 38,
+            "posterImage": {
+                "tiny": "https://media.kitsu.io/manga/140/poster_image/tiny-acd665fecd823149b76fe01a4a07fa72.jpeg",
+                "small": "https://media.kitsu.io/manga/140/poster_image/small-e74b40dc4de7f55a70245d931b45576a.jpeg",
+                "medium": "https://media.kitsu.io/manga/140/poster_image/medium-3db4201056f73305d58d4898901e97cb.jpeg",
+                "large": "https://media.kitsu.io/manga/140/poster_image/large-1f4caf184702ebc63b25918d33ee37a5.jpeg",
+                "original": "https://media.kitsu.io/manga/140/poster_image/638c26278568a46fa709524efa26f34f.jpg"
+            },
+            "coverImage": {
+                "tiny": "https://media.kitsu.io/manga/140/cover_image/tiny-8caaf941f9e78c6cc246f51753300fea.gif",
+                "small": "https://media.kitsu.io/manga/140/cover_image/small-00dfdbbd0edeff075d0e5929509667ca.gif",
+                "medium": null,
+                "large": "https://media.kitsu.io/manga/140/cover_image/large-1dafb2dc755af68b3b9a986519463248.gif",
+                "original": "https://media.kitsu.io/manga/cover_images/140/original.jpg"
+            }
+        }
+    },
+    {
+        "id": "6517",
+        "attributes": {
+            "synopsis": "Years after Yugi's legendary battles, the game is so popular that special institutions dedicated to the art of the Duel have sprung up all over the world. Join Judai Yuki and his pals at the Academy for the adventures of the next generation of Yu-Gi-Oh!",
+            "canonicalTitle": "YuGiOh GX",
+            "volumeCount": 9,
+            "posterImage": {
+                "tiny": "https://media.kitsu.io/manga/poster_images/6517/tiny.jpg",
+                "small": "https://media.kitsu.io/manga/poster_images/6517/small.jpg",
+                "medium": "https://media.kitsu.io/manga/poster_images/6517/medium.jpg",
+                "large": "https://media.kitsu.io/manga/poster_images/6517/large.jpg",
+                "original": "https://media.kitsu.io/manga/poster_images/6517/original.jpg"
+            }
+        },
+        "volumeOwned": [
+            1,
+            9,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+        ]
+    }
+]
