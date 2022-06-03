@@ -140,18 +140,17 @@ class MangaRepositoryImpl implements MangaRepository {
   }
 
   @override
-  Future<Result<void, Object>> importCollection() async {
+  Future<Result<bool, Object>> importCollection() async {
     try {
       final fileData = await _fileImport.pickFile();
       if (fileData != null) {
-        debugPrint('fileData: $fileData');
         final parsedData =
             (jsonDecode(fileData) as Iterable).cast<Map<String, dynamic>>();
         final mangas = parsedData.map(MangaKitsuModel.fromJson).toList();
-        final result = await _localDataSource.saveAllMangas(mangas);
-        return Result.value(result);
+        await _localDataSource.saveAllMangas(mangas);
+        return const Result.value(true);
       }
-      return const Result.value(null);
+      return const Result.value(false);
     } catch (e) {
       return Result.error(e);
     }

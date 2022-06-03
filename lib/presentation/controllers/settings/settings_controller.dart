@@ -13,7 +13,8 @@ class SettingsController {
   Future<Result<String, Object>> exportCollection() =>
       _mangaRepository.exportCollection();
 
-  Future<void> importCollection() => _mangaRepository.importCollection();
+  Future<Result<bool, Object>> importCollection() =>
+      _mangaRepository.importCollection();
 }
 
 final settingsControllerProvider = Provider<SettingsController>((ref) {

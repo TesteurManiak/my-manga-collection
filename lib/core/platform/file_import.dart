@@ -20,7 +20,6 @@ class FileImportImpl extends FileImport {
       type: FileType.custom,
       allowedExtensions: ['json'],
     );
-    debugPrint(result.toString());
     final file = result?.files.single;
     if (file != null) {
       // Handle iOS specific case: https://github.com/miguelpruivo/flutter_file_picker/issues/1020

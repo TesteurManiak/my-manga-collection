@@ -11,5 +11,9 @@ abstract class MangaRepository {
   Manga? getFavoriteFromId(String id);
   Manga? getMangaFromId(String id);
   Future<Result<String, Object>> exportCollection();
-  Future<Result<void, Object>> importCollection();
+
+  /// Returns `true` if a file has been selected, otherwose return `false`.
+  ///
+  /// If an error occured it will return an error [Object].
+  Future<Result<bool, Object>> importCollection();
 }
