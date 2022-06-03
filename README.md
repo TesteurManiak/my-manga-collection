@@ -9,9 +9,9 @@
 
 Follow and track your manga collection easily with a simple Flutter application using [Kitsu API](https://kitsu.docs.apiary.io/#).
 
-You can browse manga throught those available on Kistu API and save them thanks to a SQLite database to keep track of them.
+You can browse manga throught those available on Kistu API and save them thanks to a database to keep track of them. Most features are available on mobile (Android & iOS), web and desktop (Windows, Linux & MacOS).
 
-## Features
+## :sparkles: Features
 
 | Feature | Android | iOS | Web | Windows | Linux | MacOS |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -23,7 +23,7 @@ You can browse manga throught those available on Kistu API and save them thanks 
 | Export your collection to a JSON file | ✅ | ✅ | ❌️ | ❌️ | ❌️ | ❌️ |
 | Import your collection from a JSON file | ✅ | ✅ | ✅ | ✅ (not tested) | ✅ (not tested) | ✅ |
 
-## Screenshots
+## :computer: Screenshots
 
 ### :sunny: Light
 
@@ -77,6 +77,7 @@ Simply browse the manga available on the API and add them to your collection. Yo
 * [dynamic_theme](https://github.com/TesteurManiak/dynamic_theme)
 * [easy_localization](https://pub.dev/packages/easy_localization)
 * [equatable](https://pub.dev/packages/equatable)
+* [file_picker](https://pub.dev/packages/file_picker)
 * [flutter_riverpod](https://pub.dev/packages/flutter_riverpod)
 * [go_router](https://pub.dev/packages/go_router)
 * [hive](https://pub.dev/packages/hive)
