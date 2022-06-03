@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rxdart/rxdart.dart';
 
+import '../../core/platform/file_import.dart';
 import '../../core/platform/file_manager/file_manager.dart';
 import '../../core/platform/network_info.dart';
 import '../../domain/entities/manga.dart';
@@ -14,22 +15,26 @@ import '../../domain/entities/result.dart';
 import '../../domain/repositories/manga_repository.dart';
 import '../datasources/local/local_datasource.dart';
 import '../datasources/remote/remote_datasource.dart';
+import '../models/manga_kitsu_model.dart';
 
 class MangaRepositoryImpl implements MangaRepository {
   final NetworkInfo _networkInfo;
   final RemoteDataSource _remoteDataSource;
   final LocalDataSource _localDataSource;
   final FileManager _fileManager;
+  final FileImport _fileImport;
 
   MangaRepositoryImpl({
     required NetworkInfo networkInfo,
     required RemoteDataSource remoteDataSource,
     required LocalDataSource localDataSource,
     required FileManager fileManager,
+    required FileImport fileImport,
   })  : _networkInfo = networkInfo,
         _remoteDataSource = remoteDataSource,
         _localDataSource = localDataSource,
-        _fileManager = fileManager {
+        _fileManager = fileManager,
+        _fileImport = fileImport {
     _localDataSource.watchMangas().listen(_favoriteMangaSubject.add);
     unawaited(fetchFavorites());
   }
@@ -57,6 +62,7 @@ class MangaRepositoryImpl implements MangaRepository {
       _fetchedMangaSubject.add(mangas.values.toList());
       return Result.value(mangas.values.toList());
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }
@@ -67,6 +73,7 @@ class MangaRepositoryImpl implements MangaRepository {
       final result = await _localDataSource.saveManga(manga);
       return Result.value(result);
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }
@@ -94,6 +101,7 @@ class MangaRepositoryImpl implements MangaRepository {
       final result = _localDataSource.removeManga(manga);
       return Result.value(result);
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }
@@ -104,6 +112,7 @@ class MangaRepositoryImpl implements MangaRepository {
       final result = await _localDataSource.updateManga(newManga);
       return Result.value(result);
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }
@@ -133,6 +142,24 @@ class MangaRepositoryImpl implements MangaRepository {
       return Result.error(e);
     }
   }
+
+  @override
+  Future<Result<bool, Object>> importCollection() async {
+    try {
+      final fileData = await _fileImport.pickFile();
+      if (fileData != null) {
+        final parsedData =
+            (jsonDecode(fileData) as Iterable).cast<Map<String, dynamic>>();
+        final mangas = parsedData.map(MangaKitsuModel.fromJson).toList();
+        await _localDataSource.saveAllMangas(mangas);
+        return const Result.value(true);
+      }
+      return const Result.value(false);
+    } catch (e) {
+      debugPrint(e.toString());
+      return Result.error(e);
+    }
+  }
 }
 
 final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
@@ -140,12 +167,14 @@ final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
   final remoteDataSource = ref.watch(remoteDataSourceProvider);
   final localDataSource = ref.watch(localDataSourceProvider);
   final fileManager = ref.watch(fileManagerProvider);
+  final fileImport = ref.watch(fileImportProvider);
 
   return MangaRepositoryImpl(
     networkInfo: networkInfo,
     remoteDataSource: remoteDataSource,
     localDataSource: localDataSource,
     fileManager: fileManager,
+    fileImport: fileImport,
   );
 });
 

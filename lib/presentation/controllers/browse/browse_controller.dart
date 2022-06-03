@@ -17,6 +17,7 @@ class BrowseController extends StateNotifier<BrowseState> {
         super(const BrowseState());
 
   void searchMangas(String title) async {
+    if (title.isEmpty) return;
     state = state.copyWith(isLoading: true);
     final result = await _mangaRepository.searchMangas(title);
     state = state.copyWith(

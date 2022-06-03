@@ -9,6 +9,7 @@ abstract class LocalDataSource {
   Future<List<Manga>> getAllMangas();
   Future<List<Manga>> getMangasFromTitle(String title);
   Future<void> saveManga(Manga manga);
+  Future<void> saveAllMangas(List<Manga> mangas);
   Future<void> removeManga(Manga manga);
   Future<void> updateManga(Manga manga);
   Stream<List<Manga>> watchMangas();
@@ -38,6 +39,15 @@ class HiveDataSource implements LocalDataSource {
   @override
   Future<void> saveManga(Manga manga) {
     return _mangasBox.put(manga.id, manga);
+  }
+
+  @override
+  Future<void> saveAllMangas(List<Manga> mangas) {
+    final mangasMap = <String, Manga>{};
+    for (final manga in mangas) {
+      mangasMap[manga.id] = manga;
+    }
+    return _mangasBox.putAll(mangasMap);
   }
 
   @override

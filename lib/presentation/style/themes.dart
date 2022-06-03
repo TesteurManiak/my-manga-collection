@@ -41,6 +41,7 @@ abstract class AppTheme {
       extensions: {themeColors, const AppTextStyles()},
       appBarTheme: _baseDark.appBarTheme.copyWith(
         backgroundColor: themeColors.primary,
+        elevation: 0,
       ),
     );
   }

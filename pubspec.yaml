@@ -19,6 +19,7 @@ dependencies:
       ref: 2.0.0
   easy_localization: ^3.0.1
   equatable: ^2.0.3
+  file_picker: ^4.6.1
   flutter:
     sdk: flutter
   flutter_riverpod: ^1.0.4
