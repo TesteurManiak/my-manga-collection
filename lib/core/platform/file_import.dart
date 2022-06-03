@@ -28,10 +28,8 @@ class FileImportImpl extends FileImport {
       final byteData = file.bytes;
       if (byteData != null) {
         final decodedData = utf8.decode(byteData);
-        debugPrint("Decoded data: $decodedData");
         return decodedData;
       }
-      debugPrint("File data is null");
     }
     return null;
   }

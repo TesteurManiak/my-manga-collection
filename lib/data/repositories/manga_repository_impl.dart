@@ -140,7 +140,7 @@ class MangaRepositoryImpl implements MangaRepository {
   }
 
   @override
-  Future<void> importCollection() async {
+  Future<Result<void, Object>> importCollection() async {
     try {
       final fileData = await _fileImport.pickFile();
       if (fileData != null) {
@@ -148,10 +148,12 @@ class MangaRepositoryImpl implements MangaRepository {
         final parsedData =
             (jsonDecode(fileData) as Iterable).cast<Map<String, dynamic>>();
         final mangas = parsedData.map(MangaKitsuModel.fromJson).toList();
-        await _localDataSource.saveAllMangas(mangas);
+        final result = await _localDataSource.saveAllMangas(mangas);
+        return Result.value(result);
       }
+      return const Result.value(null);
     } catch (e) {
-      rethrow;
+      return Result.error(e);
     }
   }
 }
