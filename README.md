@@ -13,14 +13,16 @@ You can browse manga throught those available on Kistu API and save them thanks 
 
 ## Features
 
-* :flashlight: Light & Dark Theme
-* :speech_balloon: English & French Language
-* :mag: Browse manga by titles throught Kitsu API
-* :book: Save manga to your collection
-* :pencil: Edit titles and the number of chapters of your mangas
-* :computer: Works on Android, iOS, Web, Windows, Linux, MacOS
-* :file_folder: Export your collection to a JSON file (Android & iOS only for now)
-* :open_file_folder: Import your collection from a JSON file (Does not support web for now)
+| Feature | Android | iOS | Web | Windows | Linux | MacOS |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| :flashlight: Light & Dark Theme | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| :speech_balloon: English & French Language | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| :mag: Browse manga by titles throught Kitsu API | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| :book: Save manga to your collection | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| :pencil: Edit titles and the number of chapters of your mangas | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| :computer: Works on Android, iOS, Web, Windows, Linux, MacOS | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| :file_folder: Export your collection to a JSON file | ✅ | ✅ | ❌️ | ❌️ | ❌️ | ❌️ |
+| :open_file_folder: Import your collection from a JSON file | ✅ | ✅ | ✅ | ✅ (not tested) | ✅ (not tested) | ✅ |
 
 ## Screenshots
 

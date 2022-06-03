@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io' as io;
 
 import 'package:file_picker/file_picker.dart';
@@ -31,7 +32,11 @@ class FileImportImpl extends FileImport {
   }
 
   Future<String?> _handleWeb(PlatformFile platformFile) async {
-    // TODO: implement
+    final byteData = platformFile.bytes;
+    if (byteData != null) {
+      final bytes = byteData.buffer.asUint8List();
+      return utf8.decode(bytes);
+    }
     return null;
   }
 }
