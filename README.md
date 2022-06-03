@@ -15,14 +15,13 @@ You can browse manga throught those available on Kistu API and save them thanks 
 
 | Feature | Android | iOS | Web | Windows | Linux | MacOS |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| :flashlight: Light & Dark Theme | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| :speech_balloon: English & French Language | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| :mag: Browse manga by titles throught Kitsu API | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| :book: Save manga to your collection | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| :pencil: Edit titles and the number of chapters of your mangas | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| :computer: Works on Android, iOS, Web, Windows, Linux, MacOS | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| :file_folder: Export your collection to a JSON file | ✅ | ✅ | ❌️ | ❌️ | ❌️ | ❌️ |
-| :open_file_folder: Import your collection from a JSON file | ✅ | ✅ | ✅ | ✅ (not tested) | ✅ (not tested) | ✅ |
+| Light & Dark Theme | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| English & French Language | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Browse manga by titles throught Kitsu API | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Save manga to your collection | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Edit titles and the number of chapters of your mangas | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Export your collection to a JSON file | ✅ | ✅ | ❌️ | ❌️ | ❌️ | ❌️ |
+| Import your collection from a JSON file | ✅ | ✅ | ✅ | ✅ (not tested) | ✅ (not tested) | ✅ |
 
 ## Screenshots
 
