@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io' as io;
 
 import 'package:file_picker/file_picker.dart';
@@ -20,26 +19,20 @@ class FileImportImpl extends FileImport {
       type: FileType.custom,
       allowedExtensions: ['json'],
     );
-    final file = result?.files.single;
-    if (file != null) {
-      // Handle Apple specific case: https://github.com/miguelpruivo/flutter_file_picker/issues/1020
-      if (!kIsWeb && (io.Platform.isIOS || io.Platform.isMacOS)) {
-        return _handleIOS(file);
-      }
-      final byteData = file.bytes;
-      if (byteData != null) {
-        final decodedData = utf8.decode(byteData);
-        return decodedData;
-      }
+    final platformFile = result?.files.single;
+    if (platformFile != null) {
+      if (kIsWeb) return _handleWeb(platformFile);
+      final path = platformFile.path;
+      if (path == null) return null;
+      final file = io.File(path);
+      return file.readAsString();
     }
     return null;
   }
 
-  Future<String?> _handleIOS(PlatformFile platformFile) async {
-    final path = platformFile.path;
-    if (path == null) return null;
-    final file = io.File(path);
-    return file.readAsString();
+  Future<String?> _handleWeb(PlatformFile platformFile) async {
+    // TODO: implement
+    return null;
   }
 }
 
