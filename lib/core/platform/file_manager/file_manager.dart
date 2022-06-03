@@ -36,7 +36,7 @@ class FileManager {
           FileManagerPlatform.instance is FileManagerPlatformException) {
         if (io.Platform.isAndroid) {
           FileManagerPlatform.instance = FileManagerAndroid();
-        } else if (io.Platform.isIOS || io.Platform.isMacOS) {
+        } else if (io.Platform.isIOS) {
           FileManagerPlatform.instance = FileManagerIOS();
         }
       }
