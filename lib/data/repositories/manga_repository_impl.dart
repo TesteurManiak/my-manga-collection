@@ -62,6 +62,7 @@ class MangaRepositoryImpl implements MangaRepository {
       _fetchedMangaSubject.add(mangas.values.toList());
       return Result.value(mangas.values.toList());
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }
@@ -72,6 +73,7 @@ class MangaRepositoryImpl implements MangaRepository {
       final result = await _localDataSource.saveManga(manga);
       return Result.value(result);
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }
@@ -99,6 +101,7 @@ class MangaRepositoryImpl implements MangaRepository {
       final result = _localDataSource.removeManga(manga);
       return Result.value(result);
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }
@@ -109,6 +112,7 @@ class MangaRepositoryImpl implements MangaRepository {
       final result = await _localDataSource.updateManga(newManga);
       return Result.value(result);
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }
@@ -152,6 +156,7 @@ class MangaRepositoryImpl implements MangaRepository {
       }
       return const Result.value(false);
     } catch (e) {
+      debugPrint(e.toString());
       return Result.error(e);
     }
   }

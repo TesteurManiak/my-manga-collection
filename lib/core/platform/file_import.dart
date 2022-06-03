@@ -22,8 +22,10 @@ class FileImportImpl extends FileImport {
     );
     final file = result?.files.single;
     if (file != null) {
-      // Handle iOS specific case: https://github.com/miguelpruivo/flutter_file_picker/issues/1020
-      if (!kIsWeb && io.Platform.isIOS) return _handleIOS(file);
+      // Handle Apple specific case: https://github.com/miguelpruivo/flutter_file_picker/issues/1020
+      if (!kIsWeb && (io.Platform.isIOS || io.Platform.isMacOS)) {
+        return _handleIOS(file);
+      }
       final byteData = file.bytes;
       if (byteData != null) {
         final decodedData = utf8.decode(byteData);
