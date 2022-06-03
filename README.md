@@ -83,7 +83,6 @@ Simply browse the manga available on the API and add them to your collection. Yo
 * [hive](https://pub.dev/packages/hive)
 * [like_button](https://pub.dev/packages/like_button)
 * [rxdart](https://pub.dev/packages/rxdart)
-* [shared_preferences](https://pub.dev/packages/shared_preferences)
 
 ## Credits
 
