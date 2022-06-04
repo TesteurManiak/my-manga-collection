@@ -14,6 +14,7 @@ part 'file_manager_exceptions.dart';
 part 'file_manager_ios.dart';
 part 'file_manager_platform_interface.dart';
 part 'file_manager_web.dart';
+part 'mime_type.dart';
 
 class FileManager {
   static bool _manualRegistrationNeeded = true;
