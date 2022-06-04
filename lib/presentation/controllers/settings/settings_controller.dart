@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/repositories/manga_repository_impl.dart';
@@ -10,8 +11,14 @@ class SettingsController {
   SettingsController({required MangaRepository mangaRepository})
       : _mangaRepository = mangaRepository;
 
-  Future<Result<String, Object>> exportCollection() =>
-      _mangaRepository.exportCollection();
+  Future<String> exportCollection() async {
+    final result = await _mangaRepository.exportCollection();
+    if (result.type == ResultType.error) {
+      return result.requireError.toString();
+    } else {
+      return tr('settingsView.savedTo', args: [result.requireValue]);
+    }
+  }
 
   Future<Result<bool, Object>> importCollection() =>
       _mangaRepository.importCollection();

@@ -32,7 +32,12 @@
     "settingsView": {
         "darkMode": "Mode Sombre",
         "title": "Paramètres",
-        "language": "Langue"
+        "language": "Langue",
+        "export": "Exporter votre collection",
+        "import": "Importer une collection",
+        "importError": "Une erreur s'est produite lors de l'import de la collection.",
+        "importSuccess": "Votre collection a été importé avec succés.",
+        "savedTo": "Enregistré dans: {}"
     },
     "validators": {
         "empty": "Ce champs est requis."

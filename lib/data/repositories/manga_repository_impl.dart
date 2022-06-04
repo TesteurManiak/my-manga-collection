@@ -136,7 +136,7 @@ class MangaRepositoryImpl implements MangaRepository {
         data: jsonData,
         fileName: 'collection-$formattedDate.json',
       );
-      return Result.value('Saved to $value');
+      return Result.value(value);
     } catch (e) {
       debugPrint(e.toString());
       return Result.error(e);

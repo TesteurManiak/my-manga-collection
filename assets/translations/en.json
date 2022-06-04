@@ -32,7 +32,12 @@
     "settingsView": {
         "darkMode": "Dark Mode",
         "title": "Settings",
-        "language": "Language"
+        "language": "Language",
+        "export": "Export Collection",
+        "import": "Import Collection",
+        "importError": "An error occurred while importing the collection.",
+        "importSuccess": "Collection imported successfully.",
+        "savedTo": "Saved to: {}"
     },
     "validators": {
         "empty": "This field is required."
