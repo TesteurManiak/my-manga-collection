@@ -4,11 +4,11 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_file_saver/flutter_file_saver.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../core/platform/file_import.dart';
+import '../../core/platform/file_manager.dart';
 import '../../core/platform/network_info.dart';
 import '../../domain/entities/manga.dart';
 import '../../domain/entities/result.dart';
@@ -21,14 +21,14 @@ class MangaRepositoryImpl implements MangaRepository {
   final NetworkInfo _networkInfo;
   final RemoteDataSource _remoteDataSource;
   final LocalDataSource _localDataSource;
-  final FlutterFileSaver _fileManager;
+  final FileManager _fileManager;
   final FileImport _fileImport;
 
   MangaRepositoryImpl({
     required NetworkInfo networkInfo,
     required RemoteDataSource remoteDataSource,
     required LocalDataSource localDataSource,
-    required FlutterFileSaver fileManager,
+    required FileManager fileManager,
     required FileImport fileImport,
   })  : _networkInfo = networkInfo,
         _remoteDataSource = remoteDataSource,
@@ -132,7 +132,7 @@ class MangaRepositoryImpl implements MangaRepository {
       final jsonData = jsonEncode(localMangas.map((e) => e.toJson()).toList());
       final formattedDate =
           DateFormat('yyyy-MM-dd-HH-mm-ss').format(DateTime.now());
-      final value = await _fileManager.writeFileAsString(
+      final value = await _fileManager.writeFile(
         data: jsonData,
         fileName: 'collection-$formattedDate.json',
       );
@@ -167,12 +167,13 @@ final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
   final remoteDataSource = ref.watch(remoteDataSourceProvider);
   final localDataSource = ref.watch(localDataSourceProvider);
   final fileImport = ref.watch(fileImportProvider);
+  final fileManager = ref.watch(fileManagerProvider);
 
   return MangaRepositoryImpl(
     networkInfo: networkInfo,
     remoteDataSource: remoteDataSource,
     localDataSource: localDataSource,
-    fileManager: FlutterFileSaver(),
+    fileManager: fileManager,
     fileImport: fileImport,
   );
 });
