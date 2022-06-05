@@ -16,7 +16,7 @@ class FileManagerAndroid extends FileManagerPlatform {
       await file.writeAsString(data);
       return filePath;
     } else {
-      throw FileManagerException('Permission denied');
+      throw Exception('Permission denied');
     }
   }
 

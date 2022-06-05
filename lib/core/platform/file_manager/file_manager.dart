@@ -8,7 +8,6 @@ import 'package:path_provider/path_provider.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
 
 part 'file_manager_android.dart';
-part 'file_manager_exceptions.dart';
 part 'file_manager_ios.dart';
 
 class FileManager {
