@@ -20,6 +20,6 @@ class FileManagerImpl implements FileManager {
       _fileSaver.writeFileAsString(fileName: fileName, data: data);
 }
 
-final fileManagerPrivder = Provider<FileManager>(
+final fileManagerProvider = Provider<FileManager>(
   (_) => FileManagerImpl(fileSaver: FlutterFileSaver()),
 );
