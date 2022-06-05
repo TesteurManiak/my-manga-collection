@@ -45,7 +45,6 @@ You can browse manga throught those available on Kistu API and save them thanks 
 
 ## TODO
 
-* Extract the [`FileManager`](/lib/core/platform/file_manager) into a separate library
 * Edit more manga information (synopsys, cover image, poster image)
 * Add a manga locally if not found by the api
 * Improve theming & animations
@@ -80,6 +79,7 @@ Simply browse the manga available on the API and add them to your collection. Yo
 * [easy_localization](https://pub.dev/packages/easy_localization)
 * [equatable](https://pub.dev/packages/equatable)
 * [file_picker](https://pub.dev/packages/file_picker)
+* [flutter_file_saver](https://pub.dev/packages/flutter_file_saver)
 * [flutter_riverpod](https://pub.dev/packages/flutter_riverpod)
 * [go_router](https://pub.dev/packages/go_router)
 * [hive](https://pub.dev/packages/hive)
