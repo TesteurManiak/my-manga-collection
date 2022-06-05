@@ -1,10 +1,8 @@
-import 'dart:convert';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
 import 'dart:io' as io;
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_file_manager_platform_interface/flutter_file_manager_platform_interface.dart';
+import 'package:flutter_file_manager_web/flutter_file_manager_web.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
@@ -12,9 +10,6 @@ import 'package:permission_handler/permission_handler.dart';
 part 'file_manager_android.dart';
 part 'file_manager_exceptions.dart';
 part 'file_manager_ios.dart';
-part 'file_manager_platform_interface.dart';
-part 'file_manager_web.dart';
-part 'mime_type.dart';
 
 class FileManager {
   static bool _manualRegistrationNeeded = true;
@@ -32,7 +27,7 @@ class FileManager {
     if (_manualRegistrationNeeded) {
       if (kIsWeb &&
           FileManagerPlatform.instance is FileManagerPlatformException) {
-        FileManagerPlatform.instance = FileManagerWeb();
+        FileManagerPlatform.instance = FlutterFileManagerWeb();
       } else if (!kIsWeb &&
           FileManagerPlatform.instance is FileManagerPlatformException) {
         if (io.Platform.isAndroid) {

@@ -22,6 +22,8 @@ dependencies:
   file_picker: ^4.6.1
   flutter:
     sdk: flutter
+  flutter_file_manager_platform_interface: ^1.0.0
+  flutter_file_manager_web: ^1.0.0
   flutter_riverpod: ^1.0.4
   go_router: ^3.1.1
   hive: ^2.2.1
@@ -52,11 +54,10 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/icons/ic_launcher.png"
-  image_path_ios: "assets/icons/ic_launcher_ios.png"
 
 flutter_native_splash:
-  color: "#F5F5F5"
-  color_dark: "#222727"
+  image: assets/splash/icon.png
+  color: "#448AFF"
   android_12:
-    color: "#F5F5F5"
-    color_dark: "#222727"
+    image: assets/splash/icon.png
+    color: "#448AFF"

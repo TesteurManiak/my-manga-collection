@@ -5,6 +5,7 @@ class FileManagerAndroid extends FileManagerPlatform {
   Future<String> writeFile({
     required String fileName,
     required String data,
+    MimeType? type,
   }) async {
     if (await _requestPermission(Permission.storage)) {
       final appDocumentsDirectory = await path.getExternalStorageDirectory();

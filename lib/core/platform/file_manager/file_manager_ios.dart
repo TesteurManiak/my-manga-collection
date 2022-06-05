@@ -5,6 +5,7 @@ class FileManagerIOS extends FileManagerPlatform {
   Future<String> writeFile({
     required String fileName,
     required String data,
+    MimeType? type,
   }) async {
     // To find the file in the document folder I had to also set
     // `UISupportsDocumentBrowser`, `UIFileSharingEnabled` and
