@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../core/platform/file_import.dart';
-import '../../core/platform/file_manager/file_manager.dart';
+import '../../core/platform/file_manager.dart';
 import '../../core/platform/network_info.dart';
 import '../../domain/entities/manga.dart';
 import '../../domain/entities/result.dart';
@@ -166,8 +166,8 @@ final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
   final networkInfo = ref.watch(networkInfoProvider);
   final remoteDataSource = ref.watch(remoteDataSourceProvider);
   final localDataSource = ref.watch(localDataSourceProvider);
-  final fileManager = ref.watch(fileManagerProvider);
   final fileImport = ref.watch(fileImportProvider);
+  final fileManager = ref.watch(fileManagerProvider);
 
   return MangaRepositoryImpl(
     networkInfo: networkInfo,
