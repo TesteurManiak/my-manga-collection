@@ -14,7 +14,11 @@ class BrowseController extends StateNotifier<BrowseState> {
 
   BrowseController({required MangaRepository mangaRepository})
       : _mangaRepository = mangaRepository,
-        super(const BrowseState());
+        super(const BrowseState()) {
+    _mangaRepository.watchSearchResults().listen((data) {
+      state = state.copyWith(mangas: data);
+    });
+  }
 
   void searchMangas(String title) async {
     if (title.isEmpty) return;

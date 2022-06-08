@@ -3,6 +3,7 @@ import '../entities/result.dart';
 
 abstract class MangaRepository {
   Future<Result<List<Manga>, Object>> searchMangas(String title);
+  Stream<List<Manga>> watchSearchResults();
   Future<Result<void, Object>> addMangaToFavorite(Manga manga);
   Future<Result<void, Object>> removeMangaFromFavorite(Manga manga);
   Future<Result<void, Object>> editManga(Manga newManga);

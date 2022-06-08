@@ -67,9 +67,13 @@ class MangaRepositoryImpl implements MangaRepository {
   }
 
   @override
+  Stream<List<Manga>> watchSearchResults() => _fetchedMangaSubject.stream;
+
+  @override
   Future<Result<void, Object>> addMangaToFavorite(Manga manga) async {
     try {
       final result = await _localDataSource.saveManga(manga);
+      _updateFetchedMangaWith(manga);
       return Result.value(result);
     } catch (e) {
       debugPrint(e.toString());
@@ -97,7 +101,7 @@ class MangaRepositoryImpl implements MangaRepository {
         fetchedMangas.add(manga);
       }
       _fetchedMangaSubject.add(fetchedMangas);
-      final result = _localDataSource.removeManga(manga);
+      final result = await _localDataSource.removeManga(manga);
       return Result.value(result);
     } catch (e) {
       debugPrint(e.toString());
@@ -109,11 +113,23 @@ class MangaRepositoryImpl implements MangaRepository {
   Future<Result<void, Object>> editManga(Manga newManga) async {
     try {
       final result = await _localDataSource.updateManga(newManga);
+      _updateFetchedMangaWith(newManga);
       return Result.value(result);
     } catch (e) {
       debugPrint(e.toString());
       return Result.error(e);
     }
+  }
+
+  void _updateFetchedMangaWith(Manga manga) {
+    final fetchedMangas = List<Manga>.from(_fetchedMangaSubject.value);
+    final index = fetchedMangas.indexWhere((e) => e.id == manga.id);
+    if (index == -1) {
+      fetchedMangas.add(manga);
+    } else {
+      fetchedMangas[index] = manga;
+    }
+    _fetchedMangaSubject.add(fetchedMangas);
   }
 
   @override
