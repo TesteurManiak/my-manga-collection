@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../domain/entities/manga.dart';
 import '../../../router.dart';
+import '../../style/text_styles.dart';
 import 'custom_spinner.dart';
 import 'owned_widget.dart';
 
@@ -21,7 +22,7 @@ class MangaCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(6);
-
+    final appTextStyles = Theme.of(context).extension<AppTextStyles>();
     final posterImage = manga.posterImage;
     return Padding(
       padding: const EdgeInsets.all(4),
@@ -70,11 +71,7 @@ class MangaCell extends StatelessWidget {
                       alignment: Alignment.topLeft,
                       child: Text(
                         manga.title,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: appTextStyles?.cellTitle,
                       ),
                     ),
                     const SizedBox(height: 4),

@@ -5,12 +5,14 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color? primary;
   final Color? chipSelection;
   final Color? fixedBottomNavigationBar;
+  final Color? ownedCounter;
 
   const AppColors({
     this.background,
     this.primary,
     this.chipSelection,
     this.fixedBottomNavigationBar,
+    this.ownedCounter = Colors.white,
   });
 
   const AppColors.light()
@@ -34,6 +36,7 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? primary,
     Color? chipSelection,
     Color? fixedBottomNavigationBar,
+    Color? ownedCounter,
   }) {
     return AppColors(
       background: background ?? this.background,
@@ -41,6 +44,7 @@ class AppColors extends ThemeExtension<AppColors> {
       chipSelection: chipSelection ?? this.chipSelection,
       fixedBottomNavigationBar:
           fixedBottomNavigationBar ?? this.fixedBottomNavigationBar,
+      ownedCounter: ownedCounter ?? this.ownedCounter,
     );
   }
 
@@ -58,6 +62,7 @@ class AppColors extends ThemeExtension<AppColors> {
         other.fixedBottomNavigationBar,
         t,
       ),
+      ownedCounter: Color.lerp(ownedCounter, other.ownedCounter, t),
     );
   }
 }
