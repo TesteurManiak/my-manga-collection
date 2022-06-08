@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../domain/entities/manga.dart';
 import '../../../router.dart';
 import 'custom_spinner.dart';
+import 'owned_widget.dart';
 
 class MangaCell extends StatelessWidget {
   final Manga manga;
@@ -23,7 +23,6 @@ class MangaCell extends StatelessWidget {
     final borderRadius = BorderRadius.circular(6);
 
     final posterImage = manga.posterImage;
-    final volumeCount = manga.volumeCount;
     return Padding(
       padding: const EdgeInsets.all(4),
       child: InkWell(
@@ -54,9 +53,9 @@ class MangaCell extends StatelessWidget {
                       end: Alignment.bottomCenter,
                       colors: [
                         Colors.transparent,
-                        Colors.black.withOpacity(0.6),
+                        Colors.black.withOpacity(0.9),
                       ],
-                      stops: const [0.6, 1.0],
+                      stops: const [0.4, 1.0],
                     ),
                   ),
                 ),
@@ -74,23 +73,18 @@ class MangaCell extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                    if (volumeCount != null && volumeCount > 0)
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Text(
-                          tr(
-                            'mangaView.owned',
-                            args: [
-                              manga.volumeOwned.length.toString(),
-                              volumeCount.toString()
-                            ],
-                          ),
-                          style: const TextStyle(fontSize: 12),
-                        ),
+                    const SizedBox(height: 4),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: OwnedWidget(
+                        owned: manga.volumeOwned.length,
+                        total: manga.volumeCount,
                       ),
+                    ),
                   ],
                 ),
               )
