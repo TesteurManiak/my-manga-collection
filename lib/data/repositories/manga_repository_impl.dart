@@ -46,7 +46,6 @@ class MangaRepositoryImpl implements MangaRepository {
   Future<Result<List<Manga>, Object>> searchMangas(String title) async {
     try {
       final mangas = <String, Manga>{};
-
       final localMangas = await _localDataSource.getMangasFromTitle(title);
       for (final manga in localMangas) {
         mangas[manga.id] = manga;
@@ -160,6 +159,9 @@ class MangaRepositoryImpl implements MangaRepository {
       return Result.error(e);
     }
   }
+
+  @override
+  void disposeFavorites() => _favoriteMangaSubject.close();
 }
 
 final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
@@ -180,5 +182,6 @@ final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
 
 final favoriteChangeProvider = StreamProvider.autoDispose<List<Manga>>((ref) {
   final repository = ref.watch(mangaRepositoryProvider);
+  ref.onDispose(repository.disposeFavorites);
   return repository.watchFavorites();
 });
