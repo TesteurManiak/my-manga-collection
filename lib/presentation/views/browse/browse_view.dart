@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../controllers/browse/browse_controller.dart';
-import '../common/custom_spinner.dart';
 import '../common/manga_list.dart';
+import '../common/shimmer_manga_list.dart';
 
 class BrowseView extends ConsumerStatefulWidget {
   const BrowseView({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class _BrowseViewState extends ConsumerState<BrowseView>
         centerTitle: false,
       ),
       body: pageState.isLoading
-          ? const Center(child: CustomSpinner())
+          ? const ShimmerMangaList()
           : pageState.hasError
               ? Center(child: Text(tr('browseView.error')))
               : pageState.mangas.isEmpty

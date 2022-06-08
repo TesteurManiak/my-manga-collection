@@ -6,6 +6,7 @@ import '../../../data/repositories/manga_repository_impl.dart';
 import '../../../domain/entities/manga.dart';
 import '../common/async_value_widget.dart';
 import '../common/manga_list.dart';
+import '../common/shimmer_manga_list.dart';
 
 class CollectionView extends ConsumerStatefulWidget {
   const CollectionView({Key? key}) : super(key: key);
@@ -34,6 +35,7 @@ class _CollectionViewState extends ConsumerState<CollectionView>
               }
               return MangaList(data, index: 1);
             },
+            loading: ShimmerMangaList.new,
           );
         },
       ),

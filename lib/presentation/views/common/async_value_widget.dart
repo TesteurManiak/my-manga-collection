@@ -7,12 +7,14 @@ import 'custom_spinner.dart';
 class AsyncValueWidget<T> extends StatelessWidget {
   final AsyncValue<T> value;
   final Widget Function(T) data;
+  final Widget Function()? loading;
   final Widget Function(Object e, StackTrace? s)? error;
 
   const AsyncValueWidget({
     Key? key,
     required this.value,
     required this.data,
+    this.loading,
     this.error,
   }) : super(key: key);
 
@@ -25,7 +27,7 @@ class AsyncValueWidget<T> extends StatelessWidget {
             debugPrint(e.toString());
             return Center(child: Text(tr('errors.generic')));
           },
-      loading: () => const Center(child: CustomSpinner()),
+      loading: loading ?? () => const Center(child: CustomSpinner()),
     );
   }
 }
