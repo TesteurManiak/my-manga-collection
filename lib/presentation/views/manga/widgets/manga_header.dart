@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../domain/entities/manga.dart';
+import '../../common/custom_spinner.dart';
 
 class MangaHeader extends StatelessWidget {
   final Manga manga;
@@ -32,7 +33,7 @@ class MangaHeader extends StatelessWidget {
         ),
         child: CachedNetworkImage(
           imageUrl: manga.posterImage.smallestImageUrl,
-          placeholder: (_, __) => const CircularProgressIndicator(),
+          placeholder: (_, __) => const CustomSpinner(),
           errorWidget: (_, __, ___) => const Icon(Icons.error),
         ),
       ),

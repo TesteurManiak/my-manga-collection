@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../domain/entities/manga.dart';
 import '../../../router.dart';
+import 'custom_spinner.dart';
 
 class MangaTile extends StatelessWidget {
   final Manga manga;
@@ -28,7 +29,7 @@ class MangaTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(2),
         child: CachedNetworkImage(
           imageUrl: manga.posterImage.smallestImageUrl,
-          placeholder: (_, __) => const CircularProgressIndicator(),
+          placeholder: (_, __) => const CustomSpinner(),
           errorWidget: (_, __, ___) => const Icon(Icons.error),
         ),
       ),

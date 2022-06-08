@@ -69,6 +69,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         ],
       ),
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: const [
           BrowseView(),

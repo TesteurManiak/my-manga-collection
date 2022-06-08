@@ -89,4 +89,3 @@ Simply browse the manga available on the API and add them to your collection. Yo
 ## Credits
 
 * [Kitsu Api](https://kitsu.docs.apiary.io/#) - For the API
-* [Manga Rock](https://mangarock.com/) - For the design inspiration
