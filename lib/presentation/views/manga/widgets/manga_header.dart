@@ -24,6 +24,7 @@ class MangaHeader extends StatelessWidget {
             imageUrl: manga.coverImage?.biggestImageUrl ??
                 manga.posterImage.biggestImageUrl,
             placeholder: (_, __) => const CustomSpinner(),
+            errorWidget: (_, __, ___) => const SizedBox(),
             fit: BoxFit.cover,
           ),
         ),

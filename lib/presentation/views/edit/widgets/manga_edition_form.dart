@@ -26,7 +26,6 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
   late final MangaController _controller;
 
   String? _title;
-  int? _chapterCount;
   int? volumeCount;
 
   @override
@@ -88,8 +87,12 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
       await _controller.updateManga(
         widget.manga.copyWith(
           title: _title,
-          chapterCount: _chapterCount,
           volumeCount: volumeCount,
+          volumeOwned: volumeCount != null
+              ? widget.manga.volumeOwned
+                  .where((e) => e <= volumeCount!)
+                  .toList()
+              : null,
         ),
       );
       if (mounted) context.pop();

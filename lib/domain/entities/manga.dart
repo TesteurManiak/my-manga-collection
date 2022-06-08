@@ -53,15 +53,12 @@ class Manga extends Equatable {
 
   Manga copyWith({
     String? id,
-    String? link,
     String? synopsis,
     String? title,
     MangaImages? posterImage,
     MangaImages? coverImage,
-    int? chapterCount,
     int? volumeCount,
     List<int>? volumeOwned,
-    bool? isFavorite,
   }) {
     return Manga(
       id: id ?? this.id,
