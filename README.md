@@ -89,3 +89,7 @@ Simply browse the manga available on the API and add them to your collection. Yo
 ## Credits
 
 * [Kitsu Api](https://kitsu.docs.apiary.io/#) - For the API
+
+---
+
+<a href="https://www.buymeacoffee.com/guillaumeroux" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
