@@ -6,6 +6,8 @@
 ---
 
 [![Test workflow](https://github.com/TesteurManiak/my-manga-collection/actions/workflows/tests.yml/badge.svg)](https://github.com/TesteurManiak/my-manga-collection/actions/workflows/tests.yml)
+[![Twitter Follow](https://img.shields.io/twitter/follow/TesteurManiak?style=social)](https://twitter.com/TesteurManiak)
+
 
 Follow and track your manga collection easily with a simple Flutter application using [Kitsu API](https://kitsu.docs.apiary.io/#).
 
