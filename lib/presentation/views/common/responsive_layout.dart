@@ -20,6 +20,11 @@ class ResponsiveLayout extends StatelessWidget {
     this.desktop,
   }) : super(key: key);
 
+  static bool isMobile(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return size.width < _kTabletMinWidth;
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

@@ -12,7 +12,9 @@ class MangaHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final size = MediaQuery.of(context).size;
     return Stack(
+      alignment: Alignment.center,
       children: [
         Positioned(
           top: 0,
@@ -25,19 +27,18 @@ class MangaHeader extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        Align(
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 12),
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: theme.cardColor,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: CachedNetworkImage(
-              imageUrl: manga.posterImage.smallestImageUrl,
-              placeholder: (_, __) => const CustomSpinner(),
-              errorWidget: (_, __, ___) => const Icon(Icons.error),
-            ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 12),
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            color: theme.cardColor,
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: CachedNetworkImage(
+            imageUrl: manga.posterImage.biggestImageUrl,
+            placeholder: (_, __) => const CustomSpinner(),
+            errorWidget: (_, __, ___) => const Icon(Icons.error),
+            height: size.height / 5,
           ),
         ),
       ],

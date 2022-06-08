@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:like_button/like_button.dart';
 
 import '../../controllers/manga/manga_controller.dart';
+import '../common/responsive_layout.dart';
 import 'widgets/edit_button.dart';
 import 'widgets/manga_content.dart';
 import 'widgets/manga_header.dart';
@@ -25,6 +26,8 @@ class MangaView extends ConsumerWidget {
     final volumeCount = currentManga.volumeCount;
 
     final iconSize = AppBarTheme.of(context).actionsIconTheme?.size ?? 28.0;
+    final isMobile = ResponsiveLayout.isMobile(context);
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: CustomScrollView(
@@ -50,13 +53,17 @@ class MangaView extends ConsumerWidget {
           ),
           if (isFavorite && volumeCount != null)
             SliverPadding(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+              padding: EdgeInsets.symmetric(
+                vertical: 15,
+                horizontal: isMobile ? 16 : size.width / 6,
+              ),
               sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 8,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 100,
+                  crossAxisSpacing: 8,
                 ),
                 delegate: SliverChildBuilderDelegate(
-                  (context, index) => SelectionTile(
+                  (_, index) => SelectionTile(
                     volumeNumber: index + 1,
                     manga: currentManga,
                     controller: controller,

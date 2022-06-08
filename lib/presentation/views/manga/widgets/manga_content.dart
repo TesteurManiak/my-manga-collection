@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../style/text_styles.dart';
+import '../../common/responsive_layout.dart';
 
 class MangaContent extends StatelessWidget {
   final String title;
@@ -18,8 +19,13 @@ class MangaContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTextStyles = Theme.of(context).extension<AppTextStyles>();
+    final isMobile = ResponsiveLayout.isMobile(context);
+    final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: EdgeInsets.symmetric(
+        vertical: 16,
+        horizontal: isMobile ? 16 : size.width / 4,
+      ),
       child: Column(
         children: [
           Text(
@@ -28,7 +34,7 @@ class MangaContent extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+            padding: const EdgeInsets.symmetric(vertical: 15),
             child: Text(synopsis, textAlign: TextAlign.center),
           ),
           Text(
