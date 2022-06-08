@@ -13,7 +13,8 @@
         "formLabel": {
             "title": "Titre",
             "volume": "Nombre de tomes"
-        }
+        },
+        "validationButton": "Enregistrer"
     },
     "errors": {
         "generic": "Une erreur s'est produite."
@@ -25,7 +26,6 @@
     },
     "mangaView": {
         "chapters": "{} Tomes",
-        "owned": "Possédé: {}/{}",
         "unknown": "Inconnu",
         "notFound": "Manga introuvable."
     },

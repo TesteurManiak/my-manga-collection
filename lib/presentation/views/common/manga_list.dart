@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/manga.dart';
-import 'manga_tile.dart';
+import 'manga_grid.dart';
+import 'responsive_layout.dart';
 
 class MangaList extends StatelessWidget {
   final List<Manga> mangas;
@@ -16,11 +17,18 @@ class MangaList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: const EdgeInsets.all(8),
-      itemBuilder: (_, i) => MangaTile(manga: mangas[i], index: index),
-      separatorBuilder: (_, __) => const Divider(),
-      itemCount: mangas.length,
+    return ResponsiveLayout(
+      mobile: (_, __) => MangaGrid(
+        mangas: mangas,
+        crossAxisCount: 2,
+        index: index,
+      ),
+      tablet: (_, __) => MangaGrid(
+        mangas: mangas,
+        crossAxisCount: 5,
+        index: index,
+      ),
+      desktop: (_, __) => MangaGrid(mangas: mangas, index: index),
     );
   }
 }

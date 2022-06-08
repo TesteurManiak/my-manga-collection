@@ -6,6 +6,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../../domain/entities/manga.dart';
 import '../../../controllers/manga/manga_controller.dart';
+import '../../common/responsive_layout.dart';
+import 'desktop_validate_btn.dart';
 import 'number_form_field.dart';
 
 class MangaEditionForm extends ConsumerStatefulWidget {
@@ -36,20 +38,25 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
   @override
   Widget build(BuildContext context) {
     ref.watch(mangaControllerProvider);
+
+    final isDesktop = ResponsiveLayout.isDesktop(context);
+    final padding = isDesktop ? MediaQuery.of(context).size.width / 4 : 16.0;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(tr('editView.title')),
         actions: [
-          IconButton(
-            onPressed: _validateForm,
-            icon: const Icon(Icons.check),
-          ),
+          if (!isDesktop)
+            IconButton(
+              onPressed: _validateForm,
+              icon: const Icon(Icons.check),
+            ),
         ],
       ),
       body: Form(
         key: _formKey,
         child: ListView(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: padding),
           children: [
             TextFormField(
               initialValue: widget.manga.title,
@@ -64,6 +71,10 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
               labelText: tr('editView.formLabel.volume'),
               onSaved: (val) => volumeCount = val,
             ),
+            if (isDesktop) ...[
+              const SizedBox(height: 16),
+              DesktopValidateBtn(onPressed: _validateForm),
+            ],
           ],
         ),
       ),

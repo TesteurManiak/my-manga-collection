@@ -46,9 +46,7 @@ You can browse manga throught those available on Kistu API and save them thanks 
 ## TODO
 
 * Edit more manga information (synopsys, cover image, poster image)
-* Add a manga locally if not found by the api
-* Improve theming & animations
-* Adapt UI to tablet & desktop
+* Add a manga locally if not found by the API
 
 ## Install
 
@@ -89,4 +87,3 @@ Simply browse the manga available on the API and add them to your collection. Yo
 ## Credits
 
 * [Kitsu Api](https://kitsu.docs.apiary.io/#) - For the API
-* [Manga Rock](https://mangarock.com/) - For the design inspiration
