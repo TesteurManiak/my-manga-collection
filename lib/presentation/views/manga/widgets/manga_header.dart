@@ -12,31 +12,35 @@ class MangaHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      margin: const EdgeInsets.only(bottom: 15),
-      padding: const EdgeInsets.all(8),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: CachedNetworkImageProvider(
-            manga.coverImage?.biggestImageUrl ??
+    return Stack(
+      children: [
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          child: CachedNetworkImage(
+            imageUrl: manga.coverImage?.biggestImageUrl ??
                 manga.posterImage.biggestImageUrl,
+            placeholder: (_, __) => const CustomSpinner(),
+            fit: BoxFit.cover,
           ),
-          fit: BoxFit.cover,
         ),
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          color: theme.cardColor,
-          borderRadius: BorderRadius.circular(4),
+        Align(
+          child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 12),
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: theme.cardColor,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: CachedNetworkImage(
+              imageUrl: manga.posterImage.smallestImageUrl,
+              placeholder: (_, __) => const CustomSpinner(),
+              errorWidget: (_, __, ___) => const Icon(Icons.error),
+            ),
+          ),
         ),
-        child: CachedNetworkImage(
-          imageUrl: manga.posterImage.smallestImageUrl,
-          placeholder: (_, __) => const CustomSpinner(),
-          errorWidget: (_, __, ___) => const Icon(Icons.error),
-        ),
-      ),
+      ],
     );
   }
 }

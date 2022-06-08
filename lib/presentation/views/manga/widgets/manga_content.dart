@@ -19,7 +19,7 @@ class MangaContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTextStyles = Theme.of(context).extension<AppTextStyles>();
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       child: Column(
         children: [
           Text(
