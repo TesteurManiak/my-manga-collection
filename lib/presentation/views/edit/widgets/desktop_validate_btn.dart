@@ -1,6 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/extensions/string_extensions.dart';
 
 class DesktopValidateBtn extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -20,7 +19,7 @@ class DesktopValidateBtn extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        label: Text('Validate'.hardcoded),
+        label: Text(tr('editView.validationButton')),
         icon: const Icon(Icons.check),
       ),
     );

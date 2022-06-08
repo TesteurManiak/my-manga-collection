@@ -13,7 +13,8 @@
         "formLabel": {
             "title": "Title",
             "volume": "Volume count"
-        }
+        },
+        "validationButton": "Save"
     },
     "errors": {
         "generic": "An error occurred."
@@ -25,7 +26,6 @@
     },
     "mangaView": {
         "chapters": "{} Volumes",
-        "owned": "Owned: {}/{}",
         "unknown": "Unknown",
         "notFound": "Manga not found."
     },
