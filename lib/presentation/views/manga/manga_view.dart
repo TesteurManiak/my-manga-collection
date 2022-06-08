@@ -27,15 +27,20 @@ class MangaView extends ConsumerWidget {
 
     final iconSize = AppBarTheme.of(context).actionsIconTheme?.size ?? 28.0;
     final isMobile = ResponsiveLayout.isMobile(context);
+    final isDesktop = ResponsiveLayout.isDesktop(context);
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      floatingActionButton: isDesktop && isFavorite
+          ? EditButton.floating(isFavorite: isFavorite, id: id, index: index)
+          : null,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             floating: true,
             actions: [
-              EditButton(isFavorite: isFavorite, id: id, index: index),
+              if (!isDesktop)
+                EditButton(isFavorite: isFavorite, id: id, index: index),
               LikeButton(
                 size: iconSize,
                 isLiked: isFavorite,

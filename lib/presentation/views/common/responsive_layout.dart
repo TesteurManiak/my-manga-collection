@@ -25,6 +25,16 @@ class ResponsiveLayout extends StatelessWidget {
     return size.width < _kTabletMinWidth;
   }
 
+  static bool isTablet(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return size.width >= _kTabletMinWidth && size.width < _kDesktopMinWidth;
+  }
+
+  static bool isDesktop(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return size.width >= _kDesktopMinWidth;
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
