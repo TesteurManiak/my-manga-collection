@@ -46,8 +46,7 @@ You can browse manga throught those available on Kistu API and save them thanks 
 ## TODO
 
 * Edit more manga information (synopsys, cover image, poster image)
-* Improve theming & animations
-* Add a manga locally if not found by the api
+* Add a manga locally if not found by the API
 
 ## Install
 
