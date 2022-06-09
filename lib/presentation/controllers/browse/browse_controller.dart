@@ -12,8 +12,7 @@ class BrowseController extends StateNotifier<BrowseState> {
   final AutoDisposeRef _ref;
 
   BrowseController(this._ref) : super(const BrowseState()) {
-    _ref.listen<AsyncValue<List<Manga>>>(resultsChangeProvider,
-        (previous, next) {
+    _ref.listen<AsyncValue<List<Manga>>>(resultsChangeProvider, (_, next) {
       final mangas = next.asData?.value;
       if (mangas != null) {
         state = state.copyWith(mangas: mangas);
