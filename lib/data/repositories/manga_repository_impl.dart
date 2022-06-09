@@ -178,6 +178,9 @@ class MangaRepositoryImpl implements MangaRepository {
 
   @override
   void disposeFavorites() => _favoriteMangaSubject.close();
+
+  @override
+  void disposeSearchResults() => _fetchedMangaSubject.close();
 }
 
 final mangaRepositoryProvider = Provider<MangaRepository>((ref) {
@@ -200,4 +203,10 @@ final favoriteChangeProvider = StreamProvider.autoDispose<List<Manga>>((ref) {
   final repository = ref.watch(mangaRepositoryProvider);
   ref.onDispose(repository.disposeFavorites);
   return repository.watchFavorites();
+});
+
+final resultsChangeProvider = StreamProvider.autoDispose<List<Manga>>((ref) {
+  final repository = ref.watch(mangaRepositoryProvider);
+  ref.onDispose(repository.disposeSearchResults);
+  return repository.watchSearchResults();
 });
