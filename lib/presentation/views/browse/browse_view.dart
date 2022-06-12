@@ -56,7 +56,7 @@ class _BrowseViewState extends ConsumerState<BrowseView>
       body: pageState.isLoading
           ? const ShimmerMangaList()
           : pageState.hasError
-              ? Center(child: Text(tr('browseView.error')))
+              ? ErrorWidget(tr('browseView.error'))
               : pageState.mangas.isEmpty
                   ? Center(child: Text(tr('browseView.emptyList')))
                   : MangaList(pageState.mangas, index: 0),
