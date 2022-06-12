@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/entities/manga.dart';
 import 'manga_cell.dart';
+import 'no_scroll_glow_behavior.dart';
 
 class MangaGrid extends StatelessWidget {
   final List<Manga> mangas;
@@ -21,14 +22,17 @@ class MangaGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(8),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: crossAxisCount,
-        childAspectRatio: 0.75,
+    return ScrollConfiguration(
+      behavior: const NoScrollGlowBehavior(),
+      child: GridView.builder(
+        padding: const EdgeInsets.all(8),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossAxisCount,
+          childAspectRatio: 0.75,
+        ),
+        itemCount: mangas.length,
+        itemBuilder: (_, i) => MangaCell(manga: mangas[i], index: index),
       ),
-      itemCount: mangas.length,
-      itemBuilder: (_, i) => MangaCell(manga: mangas[i], index: index),
     );
   }
 }
