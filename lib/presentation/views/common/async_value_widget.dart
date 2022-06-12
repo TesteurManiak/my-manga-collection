@@ -25,7 +25,7 @@ class AsyncValueWidget<T> extends StatelessWidget {
       error: error ??
           (e, __) {
             debugPrint(e.toString());
-            return Center(child: Text(tr('errors.generic')));
+            return ErrorWidget(tr('errors.generic'));
           },
       loading: loading ?? () => const Center(child: CustomSpinner()),
     );
