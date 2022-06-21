@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomSpinner extends StatelessWidget {
   final double? size;
 
-  const CustomSpinner({Key? key, this.size}) : super(key: key);
+  const CustomSpinner({super.key, this.size});
 
   @override
   Widget build(BuildContext context) {

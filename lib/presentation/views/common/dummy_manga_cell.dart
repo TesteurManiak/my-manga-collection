@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DummyMangaCell extends StatelessWidget {
-  const DummyMangaCell({Key? key}) : super(key: key);
+  const DummyMangaCell({super.key});
 
   @override
   Widget build(BuildContext context) {

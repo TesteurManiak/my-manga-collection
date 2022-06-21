@@ -16,8 +16,7 @@ class MangaCell extends StatelessWidget {
   /// This is needed for go_router navigation.
   final int index;
 
-  const MangaCell({Key? key, required this.manga, required this.index})
-      : super(key: key);
+  const MangaCell({super.key, required this.manga, required this.index});
 
   @override
   Widget build(BuildContext context) {

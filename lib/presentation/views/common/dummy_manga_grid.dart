@@ -7,10 +7,10 @@ class DummyMangaGrid extends StatelessWidget {
   final int itemCount;
 
   const DummyMangaGrid({
-    Key? key,
+    super.key,
     this.crossAxisCount = 7,
     required this.itemCount,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

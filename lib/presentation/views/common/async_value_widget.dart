@@ -11,12 +11,12 @@ class AsyncValueWidget<T> extends StatelessWidget {
   final Widget Function(Object e, StackTrace? s)? error;
 
   const AsyncValueWidget({
-    Key? key,
+    super.key,
     required this.value,
     required this.data,
     this.loading,
     this.error,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

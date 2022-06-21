@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/validators.dart';
 import '../../../../domain/entities/manga.dart';
 import '../../../controllers/manga/manga_controller.dart';
 import '../../common/responsive_layout.dart';
 import 'desktop_validate_btn.dart';
 import 'number_form_field.dart';
+import 'synopsis_form_field.dart';
+import 'title_form_field.dart';
 
 class MangaEditionForm extends ConsumerStatefulWidget {
   final Manga manga;
@@ -57,13 +58,12 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 16, horizontal: padding),
           children: [
-            TextFormField(
+            TitleFormField(
               initialValue: widget.manga.title,
-              decoration: InputDecoration(
-                labelText: tr('editView.formLabel.title'),
-              ),
-              validator: Validators.notEmpty,
               onSaved: (val) => _title = val,
+            ),
+            SynopsysFormField(
+              initialValue: widget.manga.synopsis,
             ),
             NumberFormField(
               initialValue: widget.manga.volumeCount,
