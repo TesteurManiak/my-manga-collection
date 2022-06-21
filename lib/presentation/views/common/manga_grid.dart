@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/entities/manga.dart';
+import '../../controllers/home/home_controller.dart';
 import 'manga_cell.dart';
 import 'no_scroll_glow_behavior.dart';
 
-class MangaGrid extends StatelessWidget {
+class MangaGrid extends ConsumerWidget {
   final List<Manga> mangas;
   final int crossAxisCount;
 
@@ -21,17 +23,25 @@ class MangaGrid extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return ScrollConfiguration(
-      behavior: const NoScrollGlowBehavior(),
-      child: GridView.builder(
-        padding: const EdgeInsets.all(8),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxisCount,
-          childAspectRatio: 0.75,
+  Widget build(BuildContext context, WidgetRef ref) {
+    return NotificationListener<UserScrollNotification>(
+      onNotification: (notification) {
+        ref
+            .read(homeControllerProvider.notifier)
+            .onScrolled(notification.direction);
+        return true;
+      },
+      child: ScrollConfiguration(
+        behavior: const NoScrollGlowBehavior(),
+        child: GridView.builder(
+          padding: const EdgeInsets.all(8),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            childAspectRatio: 0.72,
+          ),
+          itemCount: mangas.length,
+          itemBuilder: (_, i) => MangaCell(manga: mangas[i], index: index),
         ),
-        itemCount: mangas.length,
-        itemBuilder: (_, i) => MangaCell(manga: mangas[i], index: index),
       ),
     );
   }

@@ -1,13 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../router.dart';
-import '../../style/colors.dart';
 import '../browse/browse_view.dart';
 import '../collection/collection_view.dart';
 import '../settings/settings_view.dart';
+import 'widgets/animated_bottom_bar.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   final int index;
@@ -45,29 +42,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<AppColors>();
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentPage,
-        fixedColor: colors?.fixedBottomNavigationBar,
-        // onTap: _pageController.jumpToPage,
-        onTap: (index) => context
-            .goNamed(AppRoute.home.name, params: {'index': index.toString()}),
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.add),
-            label: tr('homeView.item1'),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.book),
-            label: tr('homeView.item2'),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.settings),
-            label: tr('homeView.item3'),
-          ),
-        ],
-      ),
+      resizeToAvoidBottomInset: true,
+      bottomNavigationBar: AnimatedBottomBar(currentPage: _currentPage),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
