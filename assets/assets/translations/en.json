@@ -1,0 +1,45 @@
+{
+    "browseView": {
+        "emptyList": "No manga found.",
+        "error": "An error occurred while loading the list of manga.",
+        "searchHint": "Manga name..."
+    },
+    "collectionView": {
+        "title": "Collection",
+        "emptyList": "No manga in your collection."
+    },
+    "editView": {
+        "title": "Edit",
+        "formLabel": {
+            "title": "Title",
+            "volume": "Volume count"
+        },
+        "validationButton": "Save"
+    },
+    "errors": {
+        "generic": "An error occurred."
+    },
+    "homeView": {
+        "item1": "Search",
+        "item2": "Collection",
+        "item3": "Settings"
+    },
+    "mangaView": {
+        "chapters": "{} Volumes",
+        "unknown": "Unknown",
+        "notFound": "Manga not found."
+    },
+    "settingsView": {
+        "darkMode": "Dark Mode",
+        "title": "Settings",
+        "language": "Language",
+        "export": "Export Collection",
+        "import": "Import Collection",
+        "importError": "An error occurred while importing the collection.",
+        "importSuccess": "Collection imported successfully.",
+        "savedTo": "Saved to: {}"
+    },
+    "validators": {
+        "empty": "This field is required."
+    }
+}

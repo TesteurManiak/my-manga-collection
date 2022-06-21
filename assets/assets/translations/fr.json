@@ -1,0 +1,45 @@
+{
+    "browseView": {
+        "emptyList": "Aucun manga trouvé.",
+        "error": "Une erreur s'est produite pendant le chargement de la liste de manga.",
+        "searchHint": "Nom du manga..."
+    },
+    "collectionView": {
+        "title": "Collection",
+        "emptyList": "Aucun manga dans cette collection."
+    },
+    "editView": {
+        "title": "Edition",
+        "formLabel": {
+            "title": "Titre",
+            "volume": "Nombre de tomes"
+        },
+        "validationButton": "Enregistrer"
+    },
+    "errors": {
+        "generic": "Une erreur s'est produite."
+    },
+    "homeView": {
+        "item1": "Chercher",
+        "item2": "Collection",
+        "item3": "Paramètres"
+    },
+    "mangaView": {
+        "chapters": "{} Tomes",
+        "unknown": "Inconnu",
+        "notFound": "Manga introuvable."
+    },
+    "settingsView": {
+        "darkMode": "Mode Sombre",
+        "title": "Paramètres",
+        "language": "Langue",
+        "export": "Exporter votre collection",
+        "import": "Importer une collection",
+        "importError": "Une erreur s'est produite lors de l'import de la collection.",
+        "importSuccess": "Votre collection a été importé avec succés.",
+        "savedTo": "Enregistré dans: {}"
+    },
+    "validators": {
+        "empty": "Ce champs est requis."
+    }
+}
