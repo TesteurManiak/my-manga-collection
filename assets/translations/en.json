@@ -12,6 +12,7 @@
         "title": "Edit",
         "formLabel": {
             "title": "Title",
+            "synopsis": "Synopsis",
             "volume": "Volume count"
         },
         "validationButton": "Save"

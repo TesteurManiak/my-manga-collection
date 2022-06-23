@@ -12,6 +12,7 @@
         "title": "Edition",
         "formLabel": {
             "title": "Titre",
+            "synopsis": "Synopsis",
             "volume": "Nombre de tomes"
         },
         "validationButton": "Enregistrer"

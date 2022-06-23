@@ -27,7 +27,8 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
   late final MangaController _controller;
 
   String? _title;
-  int? volumeCount;
+  String? _synopsis;
+  int? _volumeCount;
 
   @override
   void initState() {
@@ -62,13 +63,14 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
               initialValue: widget.manga.title,
               onSaved: (val) => _title = val,
             ),
-            SynopsysFormField(
+            SynopsisFormField(
               initialValue: widget.manga.synopsis,
+              onSaved: (val) => _synopsis = val,
             ),
             NumberFormField(
               initialValue: widget.manga.volumeCount,
               labelText: tr('editView.formLabel.volume'),
-              onSaved: (val) => volumeCount = val,
+              onSaved: (val) => _volumeCount = val,
             ),
             if (isDesktop) ...[
               const SizedBox(height: 16),
@@ -87,10 +89,11 @@ class _MangaEditionFormState extends ConsumerState<MangaEditionForm> {
       await _controller.updateManga(
         widget.manga.copyWith(
           title: _title,
-          volumeCount: volumeCount,
-          volumeOwned: volumeCount != null
+          synopsis: _synopsis,
+          volumeCount: _volumeCount,
+          volumeOwned: _volumeCount != null
               ? widget.manga.volumeOwned
-                  .where((e) => e <= volumeCount!)
+                  .where((e) => e <= _volumeCount!)
                   .toList()
               : null,
         ),
