@@ -12,8 +12,8 @@ Future<void> loadDefaultTestFont() async {
     '$robotoPath/Roboto-Bold.ttf',
     '$robotoPath/Roboto-Light.ttf',
     '$robotoPath/Roboto-Medium.ttf',
-    // '$robotoPath/Roboto/Roboto-Regular.ttf',
-    // '$robotoPath/Roboto/Roboto-Thin.ttf',
+    '$robotoPath/Roboto-Regular.ttf',
+    '$robotoPath/Roboto-Thin.ttf',
   ]);
 }
 

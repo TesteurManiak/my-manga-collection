@@ -2,15 +2,13 @@ import 'package:alchemist/alchemist.dart';
 import 'package:flutter/material.dart';
 import 'package:my_manga_collection/presentation/style/text_styles.dart';
 
-import '../../utils/font_loader.dart';
-
 void main() {
+  const isRunningInCi = bool.fromEnvironment('CI', defaultValue: false);
+
   goldenTest(
     'text styles rendering',
     fileName: 'text_styles',
-    pumpBeforeTest: (tester) async {
-      await loadDefaultTestFont();
-    },
+    skip: isRunningInCi,
     builder: () => GoldenTestGroup(
       children: const AppTextStyles()
           .props
