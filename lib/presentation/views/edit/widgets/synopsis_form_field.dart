@@ -17,7 +17,6 @@ class SynopsisFormField extends StatelessWidget {
         labelText: tr('editView.formLabel.synopsis'),
       ),
       keyboardType: TextInputType.multiline,
-      // expands: true,
       validator: Validators.notEmpty,
       minLines: 1,
       maxLines: 20,

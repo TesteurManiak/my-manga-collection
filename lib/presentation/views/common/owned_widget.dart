@@ -20,7 +20,7 @@ class OwnedWidget extends StatelessWidget {
 
     final completed = total != null && total! > 0 && owned == total;
     final color = completed ? Colors.lightGreen : appColors?.ownedCounter;
-    final style = appTextStyles?.ownedCounter?.copyWith(color: color);
+    final style = appTextStyles?.ownedCounter.copyWith(color: color);
 
     return Row(
       mainAxisSize: MainAxisSize.min,

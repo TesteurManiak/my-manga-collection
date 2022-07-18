@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../core/utils/named_property.dart';
+
 class AppTextStyles extends ThemeExtension<AppTextStyles> {
-  final TextStyle? mangaTitle;
-  final TextStyle? cellTitle;
-  final TextStyle? ownedCounter;
+  final TextStyle mangaTitle;
+  final TextStyle cellTitle;
+  final TextStyle ownedCounter;
 
   const AppTextStyles({
     this.mangaTitle =
@@ -17,7 +19,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   });
 
   @override
-  ThemeExtension<AppTextStyles> copyWith({
+  AppTextStyles copyWith({
     TextStyle? mangaTitle,
     TextStyle? cellTitle,
     TextStyle? ownedCounter,
@@ -30,7 +32,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   }
 
   @override
-  ThemeExtension<AppTextStyles> lerp(
+  AppTextStyles lerp(
     ThemeExtension<AppTextStyles>? other,
     double t,
   ) {
@@ -38,9 +40,15 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
       return this;
     }
     return AppTextStyles(
-      mangaTitle: TextStyle.lerp(mangaTitle, other.mangaTitle, t),
-      cellTitle: TextStyle.lerp(cellTitle, other.cellTitle, t),
-      ownedCounter: TextStyle.lerp(ownedCounter, other.ownedCounter, t),
+      mangaTitle: TextStyle.lerp(mangaTitle, other.mangaTitle, t)!,
+      cellTitle: TextStyle.lerp(cellTitle, other.cellTitle, t)!,
+      ownedCounter: TextStyle.lerp(ownedCounter, other.ownedCounter, t)!,
     );
   }
+
+  List<NamedProperty<TextStyle>> get props => [
+        NamedProperty('mangaTitle', mangaTitle),
+        NamedProperty('cellTitle', cellTitle),
+        NamedProperty('ownedCounter', ownedCounter),
+      ];
 }
