@@ -7,21 +7,25 @@ Future<void> loadDefaultTestFont() async {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const robotoPath = 'assets/fonts/Roboto';
-  await _loadFamily('alchemist', 'Roboto', [
-    '$robotoPath/Roboto-Black.ttf',
-    '$robotoPath/Roboto-Bold.ttf',
-    '$robotoPath/Roboto-Light.ttf',
-    '$robotoPath/Roboto-Medium.ttf',
-    '$robotoPath/Roboto-Regular.ttf',
-    '$robotoPath/Roboto-Thin.ttf',
-  ]);
+  await _loadFamily(
+    package: 'alchemist',
+    name: 'Roboto',
+    assets: [
+      '$robotoPath/Roboto-Black.ttf',
+      '$robotoPath/Roboto-Bold.ttf',
+      '$robotoPath/Roboto-Light.ttf',
+      '$robotoPath/Roboto-Medium.ttf',
+      '$robotoPath/Roboto-Regular.ttf',
+      '$robotoPath/Roboto-Thin.ttf',
+    ],
+  );
 }
 
-Future<void> _loadFamily(
-  String package,
-  String name,
-  List<String> assets,
-) async {
+Future<void> _loadFamily({
+  required String package,
+  required String name,
+  required List<String> assets,
+}) async {
   final prefix = 'packages/$package/';
   final fontLoader = FontLoader(name);
 
