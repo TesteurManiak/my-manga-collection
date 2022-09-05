@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
           themeMode: themeMode,
           routerDelegate: _router.routerDelegate,
           routeInformationParser: _router.routeInformationParser,
+          routeInformationProvider: _router.routeInformationProvider,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
